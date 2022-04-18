@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "newProject.app"
-               BlueprintName = "newProject"
-               ReferencedContainer = "container:newProject.xcodeproj">
+               BuildableName = "arzinja.app"
+               BlueprintName = "arzinja"
+               ReferencedContainer = "container:arzinja.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "newProjectTests.xctest"
-               BlueprintName = "newProjectTests"
-               ReferencedContainer = "container:newProject.xcodeproj">
+               BuildableName = "arzinjaTests.xctest"
+               BlueprintName = "arzinjaTests"
+               ReferencedContainer = "container:arzinja.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "newProject.app"
-            BlueprintName = "newProject"
-            ReferencedContainer = "container:newProject.xcodeproj">
+            BuildableName = "arzinja.app"
+            BlueprintName = "arzinja"
+            ReferencedContainer = "container:arzinja.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "newProject.app"
-            BlueprintName = "newProject"
-            ReferencedContainer = "container:newProject.xcodeproj">
+            BuildableName = "arzinja.app"
+            BlueprintName = "arzinja"
+            ReferencedContainer = "container:arzinja.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

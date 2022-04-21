@@ -184,6 +184,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				4486AD9D8C63EF654A6F1A83 /* [CP-User] [instabug-reactnative] Upload Sourcemap */,
 			);
 			buildRules = (
 			);
@@ -280,6 +281,16 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-arzinja/Pods-arzinja-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4486AD9D8C63EF654A6F1A83 /* [CP-User] [instabug-reactnative] Upload Sourcemap */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] [instabug-reactnative] Upload Sourcemap";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"../node_modules/instabug-reactnative/ios/upload_sourcemap.sh\"";
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -10,6 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/netinfo": "^8.2.0",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.1",
@@ -17,13 +19,18 @@
     "@reduxjs/toolkit": "^1.8.1",
     "i18next": "^21.6.16",
     "i18next-http-backend": "^1.4.0",
+    "instabug-reactnative": "^10.13.0",
     "react": "17.0.2",
     "react-i18next": "^11.16.7",
     "react-native": "0.68.1",
+    "react-native-app-intro-slider": "^4.0.4",
+    "react-native-device-info": "^8.7.0",
     "react-native-flash-message": "^0.2.1",
     "react-native-gesture-handler": "^2.4.0",
     "react-native-safe-area-context": "^4.2.4",
     "react-native-screens": "^3.13.1",
+    "react-native-ux-cam": "^5.3.4",
+    "react-native-vector-icons": "^9.1.0",
     "react-redux": "^8.0.1",
     "yarn": "^1.22.18"
   },

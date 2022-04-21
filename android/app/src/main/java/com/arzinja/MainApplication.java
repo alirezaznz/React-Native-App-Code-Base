@@ -52,6 +52,13 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    new RNInstabugReactnativePackage
+            .Builder("33ca5f0094051bbb604c82d60d1698bb", MainApplication.this)
+            .setInvocationEvent("shake")
+            .setPrimaryColor("#00DF9A")
+            .setFloatingEdge("left")
+            .setFloatingButtonOffsetFromTop(250)
+            .build();
     // If you opted-in for the New Architecture, we enable the TurboModule system
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);

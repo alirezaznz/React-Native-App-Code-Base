@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
-const About = () => {
+const Notification = () => {
   return (
     <View style={styles.center}>
-      <Text>This is the about screen</Text>
+      <Text>This is the Notification screen</Text>
     </View>
   );
 };
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default About;
+export default Notification;

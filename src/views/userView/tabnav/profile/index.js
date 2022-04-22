@@ -6,8 +6,8 @@ const Profile = ({navigation}) => {
     <View style={styles.center}>
       <Text>This is the Profile screen</Text>
       <Button
-          title="go to tab1"
-          onPress={() => navigation.replace("TabNav")}
+          title="go to Side menu"
+          onPress={() => navigation.navigate("SideNav")}
         />
     </View>
   );

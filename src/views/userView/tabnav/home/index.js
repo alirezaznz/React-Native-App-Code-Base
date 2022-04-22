@@ -6,8 +6,8 @@ const Home = ({navigation}) => {
     <View style={styles.center}>
       <Text>This is the Home screen</Text>
       <Button
-          title="go to tab1"
-          onPress={() => navigation.replace("TabNav")}
+          title="go to notification"
+          onPress={() => navigation.navigate("NotifcationNav")}
         />
     </View>
   );

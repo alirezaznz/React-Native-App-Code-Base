@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Notificaiton from "../views/userView/notification";
 import SideNav from "../views/userView/sidenav";
 import Home from "../views/userView/tabnav/home";
+import About from "../views/userView/about";
 import Profile from "../views/userView/tabnav/profile";
 
 const Tab = createBottomTabNavigator();
@@ -26,6 +27,7 @@ const BottomTabNavigator = () => {
                 headerShown: false
             }}>
                 <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen name="About" component={About} />
             </Stack.Navigator>
         );
     }

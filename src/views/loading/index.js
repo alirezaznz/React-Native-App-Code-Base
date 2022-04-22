@@ -1,10 +1,10 @@
 import React from "react";
 import { View,Button, StyleSheet, Text } from "react-native";
 
-const loading = ({navigation}) => {
+const Loading = ({navigation}) => {
   return (
     <View style={styles.center}>
-      <Text>This is the loading screen</Text>
+      <Text>This is the Loading screen</Text>
       <Button
           title="go to intro"
           onPress={() => navigation.replace("Intor")}
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default loading;
+export default Loading;

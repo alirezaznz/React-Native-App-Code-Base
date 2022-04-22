@@ -1,0 +1,1291 @@
+openapi: 3.0.0
+info:
+  title: Arzinja
+  version: '1.0'
+  description: arzinja api doc
+  contact:
+    name: Farhad
+servers:
+  - url: http://api.arzinja.app
+paths:
+  /login:
+    post:
+      summary: send sms for authentication
+      operationId: post-user
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          description: Mobile number not acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonError'
+              examples:
+                invalid phone number:
+                  value:
+                    message: invalid mobile format
+                    code: 1100
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mobile:
+                  type: string
+              required:
+                - mobile
+            examples:
+              login:
+                value:
+                  mobile: '989369516317'
+        description: Post the necessary fields for the API to create a new user.
+      description: Create a new user.
+    parameters: []
+  /auth:
+    post:
+      summary: Authenticate with OTP
+      operationId: post-auth
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  refresh_token:
+                    type: string
+                  expire_time:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonError'
+              examples:
+                invalid phone number:
+                  value:
+                    message: invalid phone number
+                    code: 1101
+                invalid code:
+                  value:
+                    message: invalid code
+                    code: 1102
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+              examples:
+                invalid mobile/code:
+                  value:
+                    message: invalid mobile/code
+                    code: 1103
+      description: authenticate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mobile:
+                  type: string
+                code:
+                  type: string
+            examples:
+              auth:
+                value:
+                  mobile: '989369516317'
+                  code: '123456'
+  /profile:
+    get:
+      summary: get user profile
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-my-profile
+      description: get my profile
+      security:
+        - BearerToken: []
+    parameters: []
+    patch:
+      summary: update user profile
+      operationId: patch-profile
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FieldRequired'
+                  - $ref: '#/components/schemas/InvalidFormat'
+              examples:
+                firstname is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: firstname
+                lastname is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: lastname
+                invalid format:
+                  value:
+                    message: invalid $s format, it should be %s
+                    code: 1007
+                    field: firstname
+                    valid: persian
+                invalid tel:
+                  value:
+                    message: invalid %s format
+                    code: 1108
+                    field: telephone
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      description: updatePersonalInfo
+  /profile/avatar:
+    patch:
+      summary: update profile avatar
+      operationId: patch-profile-avatar
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldRequired'
+              examples:
+                profile pic required:
+                  value:
+                    message: profile_pic required
+                    code: 1104
+                    field: profile_pic
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /verification:
+    post:
+      summary: card verification
+      operationId: post-verification
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CommonError'
+                  - $ref: '#/components/schemas/FieldRequired'
+              examples:
+                evidence already sent:
+                  value:
+                    message: evidence already sent
+                    code: 1109
+                idcard is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: idcard
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /telCode:
+    get:
+      summary: get tel code
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-telCode
+    post:
+      summary: verify tel
+      operationId: post-telCode
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FieldRequired'
+                  - $ref: '#/components/schemas/InvalidFormat'
+              examples:
+                code is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: code
+                invalid code format:
+                  value:
+                    message: invalid %s format, it should be %s
+                    code: 1007
+                    field: code
+                    valid: numeric
+                wallet_name is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: code
+                invalid code:
+                  value:
+                    message: invalid code
+                    code: 1102
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+    patch:
+      summary: change tel
+      operationId: patch-telCode
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FieldRequired'
+                  - $ref: '#/components/schemas/InvalidFormat'
+              examples:
+                tel is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: tel
+                invalid tel format:
+                  value:
+                    message: invalid %s format, it should start with 09
+                    code: 1007
+                    field: tel
+                    valid: start with 09
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /orders:
+    get:
+      summary: get orders list
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-orders
+  /orders/{orderId}:
+    parameters:
+      - schema:
+          type: string
+        name: orderId
+        in: path
+        required: true
+    get:
+      summary: get single order
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-orders-orderId
+  /transactions:
+    get:
+      summary: get transaction list
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-transactions
+  /referral:
+    get:
+      summary: get referral link
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-referral
+  /tickets:
+    get:
+      summary: get list of tickets
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldRequired'
+              examples:
+                subject is required:
+                  value:
+                    message: subject is required
+                    code: 1006
+                    field: subject
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-tickets
+    post:
+      summary: create new ticket
+      operationId: post-tickets
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /ticket/{ticketId}:
+    parameters:
+      - schema:
+          type: string
+        name: ticketId
+        in: path
+        required: true
+    get:
+      summary: get single ticket
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-ticket-ticketId
+  /ticket/{ticketId}/replay:
+    parameters:
+      - schema:
+          type: string
+        name: ticketId
+        in: path
+        required: true
+    put:
+      summary: replay ticket
+      operationId: put-ticket-ticketId-replay
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FieldRequired'
+                  - $ref: '#/components/schemas/CommonError'
+              examples:
+                content is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: content
+                ticket already closed:
+                  value:
+                    message: ticket already closed, please create another ticket
+                    code: 1110
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+              examples:
+                ticket userId not match to current user id:
+                  value:
+                    message: Authorization Error
+                    code: 1001
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /notifications:
+    get:
+      summary: get list of notifications
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-notifications
+  /notification/{notifId}/read:
+    parameters:
+      - schema:
+          type: string
+        name: notifId
+        in: path
+        required: true
+    put:
+      summary: set notification as read
+      operationId: put-notification-notifId-read
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /favorite:
+    post:
+      summary: add to favorite
+      operationId: post-favorite
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /cards:
+    get:
+      summary: Get list of cards
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-cards
+    post:
+      summary: add new card
+      operationId: post-cards
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FieldRequired'
+              examples:
+                card_number is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: card_number
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /chashbacks:
+    get:
+      summary: get list of cashbacks
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-chashbacks
+    post:
+      summary: create new cashback
+      operationId: post-chashbacks
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CommonError'
+                  - $ref: '#/components/schemas/FieldRequired'
+              examples:
+                in progress:
+                  value:
+                    message: operation in progress
+                    code: 1111
+                amount is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: amout
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '402':
+          description: Payment Required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonError'
+              examples:
+                payment required:
+                  value:
+                    message: credit not enough
+                    code: 1004
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /charge:
+    post:
+      summary: add credit rial
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonError'
+              examples:
+                min amount:
+                  value:
+                    message: min amount is 200000
+                    code: 1112
+                max amount:
+                  value:
+                    message: max amount is 50000000
+                    code: 1113
+                max first charger:
+                  value:
+                    message: max first charge is %s
+                    code: 1114
+                    maxFirstBuy: '1000000'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonError'
+              examples:
+                temporary not available:
+                  value:
+                    message: charge service temporary not available
+                    code: 1114
+      operationId: get-charge
+  /internalWallets:
+    get:
+      summary: get list of internal wallet with total rial
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-internalWallets
+  /internalWallet/deposit:
+    put:
+      summary: deposit to internal wallet
+      operationId: put-internalWallet-deposit
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FieldRequired'
+                  - $ref: '#/components/schemas/CommonError'
+              examples:
+                amount is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: amount
+                invalid currency:
+                  value:
+                    message: selected currency is not valid
+                    code: 1115
+                invalid network:
+                  value:
+                    message: invalid network
+                    code: 1117
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CommonError'
+              examples:
+                deposit not available:
+                  value:
+                    message: deposit not temporary available
+                    code: 1116
+                deposit in this network not available:
+                  value:
+                    message: deposit in this network not available
+                    code: 1118
+                unexpected error:
+                  value:
+                    message: unexpected error! try again
+                    code: 1008
+  /internalWallet/withdraw:
+    put:
+      summary: withdraw from internal wallet
+      operationId: put-internalWallet-withdraw
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FieldRequired'
+                  - $ref: '#/components/schemas/CommonError'
+              examples:
+                amount is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: amount
+                invalid currency:
+                  value:
+                    message: selected currency is not valid
+                    code: 1115
+                invalid network:
+                  value:
+                    message: invalid network
+                    code: 1117
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CommonError'
+              examples:
+                withdraw not available:
+                  value:
+                    message: withdraw not temporary available
+                    code: 1120
+                withdraw in this network not available:
+                  value:
+                    message: withdraw in this network not available
+                    code: 1121
+                unexpected error:
+                  value:
+                    message: unexpected error! try again
+                    code: 1008
+  /internalWallet/withdraw/confirm:
+    put:
+      summary: withdraw from internal wallet
+      operationId: put-internalWallet-withdraw1
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FieldRequired'
+                  - $ref: '#/components/schemas/CommonError'
+              examples:
+                code is required:
+                  value:
+                    message: '%s is required'
+                    code: 1006
+                    field: code
+                already approved:
+                  value:
+                    message: this request already approved
+                    code: 1122
+                    field: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '402':
+          description: Payment Required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonError'
+              examples:
+                credit not enough for withdraw:
+                  value:
+                    message: credit not enough for withdraw
+                    code: 1123
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonError'
+              examples:
+                withdraw not available:
+                  value:
+                    message: withdraw not temporary available
+                    code: 1120
+                unexpected error:
+                  value:
+                    message: unexpected error! try again
+                    code: 1008
+  /hisotry:
+    get:
+      summary: get history
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-hisotry
+  /version:
+    get:
+      summary: get version
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-version
+  /currency:
+    get:
+      summary: get currency list
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-currency
+  /customers:
+    get:
+      summary: get list of customers
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-customers
+  /currency/{cid}/networks:
+    parameters:
+      - schema:
+          type: string
+        name: cid
+        in: path
+        required: true
+    get:
+      summary: get currency networks
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-currency-cid-networks
+  /settings:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-settings
+  /userWallet:
+    get:
+      summary: get user wallet
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-userWallet
+  /order/buy:
+    post:
+      summary: start new buy order
+      operationId: post-order-buy
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+  /pairs:
+    get:
+      summary: get list of pairs
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationError'
+      operationId: get-pairs
+components:
+  schemas:
+    UserProfile:
+      title: UserProfile
+      type: object
+      properties:
+        id:
+          type: string
+        avatarURL:
+          type: string
+      description: User profile modal
+    CommonError:
+      title: CommonError
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+    AuthenticationError:
+      title: AuthenticationError
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: number
+      x-examples:
+        invalid token:
+          message: invalid token
+          code: 1000
+      description: auth error
+    AuthorizationError:
+      title: AuthorizationError
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: number
+      x-examples:
+        Authorization Error:
+          message: authorization error
+          code: 1001
+        برای دسترسی ابتدا احراز هویت باید انجام شود:
+          message: authorization failed
+          code: 1002
+        user banned:
+          message: user banned
+          code: 1003
+    FieldRequired:
+      title: FieldRequired
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: number
+        field:
+          type: string
+    InvalidFormat:
+      title: InvalidFormat
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: number
+        field:
+          type: string
+        valid:
+          type: string
+  securitySchemes:
+    BearerToken:
+      name: Authorization
+      type: apiKey
+      in: header
+      description: ''

@@ -24,7 +24,9 @@ const BottomTabNavigator = () => {
 
 const SideStackNavigator = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+            headerShown: false
+        }}>
             <Stack.Screen name="Menu" component={SideNav} />
         </Stack.Navigator>
     );
@@ -32,9 +34,7 @@ const SideStackNavigator = () => {
 
 const UserStackNavigator = () => {
     return (
-        <Stack.Navigator screenOptions={{
-            headerShown: false
-        }} >
+        <Stack.Navigator  >
             <Stack.Screen name="TabNav" component={BottomTabNavigator} />
             <Stack.Screen name="SideNav" component={SideStackNavigator} />
             <Stack.Screen name="Notification" component={Notificaiton} />

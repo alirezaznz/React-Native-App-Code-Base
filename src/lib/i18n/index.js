@@ -18,6 +18,7 @@ i18n
   .use(initReactI18next)
   //.use(HttpApi)
   .init({
+    compatibilityJSON: 'v3',
     resources,
     lng: "ir",
     debug: false,

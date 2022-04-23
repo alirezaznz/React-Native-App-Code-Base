@@ -7,7 +7,9 @@ const Loading = ({navigation}) => {
       <Text>This is the Loading screen</Text>
       <Button
           title="go to intro"
-          onPress={() => navigation.replace("Intor")}
+          onPress={() => {
+            navigation.replace("Intor")
+          }}
         />
     </View>
   );

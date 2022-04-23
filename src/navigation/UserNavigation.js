@@ -11,41 +11,21 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
-const SideStackNavigator = () => {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name="Menu" component={SideNav} />
-        </Stack.Navigator>
-    );
-}
-
 const BottomTabNavigator = () => {
-
-    const MainStackNavigator = () => {
-        return (
-            <Stack.Navigator screenOptions={{
-                headerShown: false
-            }}>
-                <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen name="About" component={About} />
-            </Stack.Navigator>
-        );
-    }
-
     return (
         <Tab.Navigator screenOptions={{
             headerShown: false
         }}>
-            <Tab.Screen name="HomeNav" component={MainStackNavigator} />
+            <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Profile" component={Profile} />
         </Tab.Navigator>
     );
 };
 
-const NotificationStackNavigator = () => {
+const SideStackNavigator = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Notification" component={Notificaiton} />
+            <Stack.Screen name="Menu" component={SideNav} />
         </Stack.Navigator>
     );
 }
@@ -57,7 +37,8 @@ const UserStackNavigator = () => {
         }} >
             <Stack.Screen name="TabNav" component={BottomTabNavigator} />
             <Stack.Screen name="SideNav" component={SideStackNavigator} />
-            <Stack.Screen name="NotifcationNav" component={NotificationStackNavigator} />
+            <Stack.Screen name="Notification" component={Notificaiton} />
+            <Stack.Screen name="About" component={About} />
         </Stack.Navigator>
     );
 }

@@ -27,8 +27,8 @@ const checkCodePushUpdate = () => {
 };
 
 const App = () => {
-  const isHermes = () => !!global.HermesInternal;
-  console.log(`isHermes: ${isHermes()}`)
+  // const isHermes = () => !!global.HermesInternal;
+  // console.log(`isHermes: ${isHermes()}`)
   // checkCodePushUpdate();
 
   return (

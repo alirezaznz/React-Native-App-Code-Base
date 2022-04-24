@@ -6,12 +6,12 @@
  * @flow strict-local
  */
 
-import React, { Node } from 'react';
+import React, {Node} from 'react';
 import codePush from 'react-native-code-push';
-import { NavigationContainer } from "@react-navigation/native";
-import { Provider } from 'react-redux'
-import Store from "./src/redux/store"
-import AppNavigation from "./src/navigation";
+import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
+import Store from './src/redux';
+import AppNavigation from './src/navigation';
 
 //todo create newone and move it to constant file
 const ANDROID_PRODUCTION_SECRET = 'EgfmFQfbm00yI4SppOd2EsDcmC1ciGMgr2Az9';
@@ -22,15 +22,14 @@ const checkCodePushUpdate = () => {
   return codePush.sync({
     checkFrequency: codePush.CheckFrequency.ON_APP_START,
     installMode: codePush.InstallMode.ON_NEXT_RESTART,
-    deploymentKey: Platform.OS === 'android' ? ANDROID_PRODUCTION_SECRET : IOS_PRODUCTION_SECRET,
+    deploymentKey:
+      Platform.OS === 'android'
+        ? ANDROID_PRODUCTION_SECRET
+        : IOS_PRODUCTION_SECRET,
   });
 };
 
 const App = () => {
-  // const isHermes = () => !!global.HermesInternal;
-  // console.log(`isHermes: ${isHermes()}`)
-  // checkCodePushUpdate();
-
   return (
     <Provider store={Store}>
       <NavigationContainer>

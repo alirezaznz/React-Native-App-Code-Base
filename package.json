@@ -24,6 +24,7 @@
     "react-i18next": "^11.16.7",
     "react-native": "0.68.1",
     "react-native-app-intro-slider": "^4.0.4",
+    "react-native-biometrics": "^2.1.4",
     "react-native-code-push": "^7.0.4",
     "react-native-device-info": "^8.7.0",
     "react-native-flash-message": "^0.2.1",

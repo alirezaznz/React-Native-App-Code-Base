@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="86.897" viewBox="0 0 120 86.897">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1.606" y1="0.5" x2="-1.838" y2="-1.644" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00eba2"/>
+      <stop offset="0.473" stop-color="#1588a7"/>
+      <stop offset="1" stop-color="#25449b"/>
+    </linearGradient>
+  </defs>
+  <g id="credit-card_6_" data-name="credit-card (6)" transform="translate(0 -64)">
+    <rect id="Rectangle_231" data-name="Rectangle 231" width="115.862" height="16.552" transform="translate(2.069 90.897)" fill="#73edc7"/>
+    <g id="Group_663" data-name="Group 663" transform="translate(0 64)">
+      <path id="Path_1989" data-name="Path 1989" d="M362.345,256a10.345,10.345,0,1,0,10.345,10.345A10.244,10.244,0,0,0,362.345,256Zm0,16.552a6.207,6.207,0,1,1,6.207-6.207A6.1,6.1,0,0,1,362.345,272.552Z" transform="translate(-265.31 -202.869)" fill="url(#linear-gradient)"/>
+      <path id="Path_1990" data-name="Path 1990" d="M10.345,150.9h99.31A10.244,10.244,0,0,0,120,140.552V74.345A10.244,10.244,0,0,0,109.655,64H10.345A10.244,10.244,0,0,0,0,74.345v66.207A10.244,10.244,0,0,0,10.345,150.9Zm99.31-4.138H10.345a6.1,6.1,0,0,1-6.207-6.207v-39.31H115.862v39.31A6.1,6.1,0,0,1,109.655,146.759ZM4.138,84.69H115.862V97.1H4.138Zm6.207-16.552h99.31a6.1,6.1,0,0,1,6.207,6.207v6.207H4.138V74.345A6.1,6.1,0,0,1,10.345,68.138Z" transform="translate(0 -64)" fill="url(#linear-gradient)"/>
+      <path id="Path_1991" data-name="Path 1991" d="M42.345,320H34.069a2.069,2.069,0,0,0,0,4.138h8.276a2.069,2.069,0,0,0,0-4.138Z" transform="translate(-23.724 -253.793)" fill="url(#linear-gradient)"/>
+      <path id="Path_1992" data-name="Path 1992" d="M106.345,320H98.069a2.069,2.069,0,0,0,0,4.138h8.276a2.069,2.069,0,1,0,0-4.138Z" transform="translate(-71.172 -253.793)" fill="url(#linear-gradient)"/>
+      <path id="Path_1993" data-name="Path 1993" d="M170.345,320h-8.276a2.069,2.069,0,0,0,0,4.138h8.276a2.069,2.069,0,0,0,0-4.138Z" transform="translate(-118.621 -253.793)" fill="url(#linear-gradient)"/>
+      <path id="Path_1994" data-name="Path 1994" d="M234.345,320h-8.276a2.069,2.069,0,1,0,0,4.138h8.276a2.069,2.069,0,1,0,0-4.138Z" transform="translate(-166.069 -253.793)" fill="url(#linear-gradient)"/>
+      <path id="Path_1995" data-name="Path 1995" d="M34.069,292.138h33.1a2.069,2.069,0,1,0,0-4.138h-33.1a2.069,2.069,0,0,0,0,4.138Z" transform="translate(-23.724 -230.069)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

@@ -1,11 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import Notificaiton from "../views/userView/notification";
-import SideNav from "../views/userView/sidenav";
-import Home from "../views/userView/tabnav/home";
-import About from "../views/userView/about";
-import Profile from "../views/userView/tabnav/profile";
+import Notificaiton from "../screens/userView/notification";
+import SideNav from "../screens/userView/sidenav";
+import Home from "../screens/userView/tabnav/home";
+import About from "../screens/userView/about";
+import Profile from "../screens/userView/tabnav/profile";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

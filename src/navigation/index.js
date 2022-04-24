@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import UserStackNavigator from "./UserNavigation";
 import AuthStackNavigation from "./AuthNavigation";
-import Loading from "../views/loading";
-import AppIntro from "../views/intro"
+import Loading from "../screens/loading";
+import AppIntro from "../screens/intro"
 
 const Stack = createStackNavigator();
 

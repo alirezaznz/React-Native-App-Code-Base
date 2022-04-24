@@ -1,11 +1,10 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from "../views/authView/login";
+import Login from "../screens/authView/login";
 
 const Stack = createStackNavigator();
 
-
-const UserStackNavigator = () => {
+const AuthStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false
@@ -15,4 +14,4 @@ const UserStackNavigator = () => {
     );
 }
 
-export default UserStackNavigator;
+export default AuthStackNavigator;

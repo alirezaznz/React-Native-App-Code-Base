@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "checkJs": true,
+      "jsx": "react",
+      "allowSyntheticDefaultImports": true
+    },
+    "exclude": ["node_modules"]
+  }

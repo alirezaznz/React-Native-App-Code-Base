@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   ActivityIndicator,
@@ -6,9 +6,22 @@ import {
   StyleSheet,
   Dimensions
 } from 'react-native';
-import {Images} from "./../../constants"
+import { Images } from "./../../constants"
+import { LocalStorage } from "./../../util";
 
 const Loading = ({ navigation }) => {
+
+  // check if we should navigate to intro page
+  useEffect(() => {
+    (async () => {
+      const introAlreadySeen = await LocalStorage.getItem('introAlreadySeen');
+      if (introAlreadySeen !== true) {
+        //await LocalStorage.setItem('introAlreadySeen', true)
+        setTimeout(() => navigation.replace("Intor"), 2000)
+      }
+    })()
+  }, [])
+
   return (
     <ImageBackground source={Images.SplashImage} style={styles.container} resizeMode={'cover'}>
       <View style={styles.indicatorWrapper}>

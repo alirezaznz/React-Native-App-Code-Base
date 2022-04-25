@@ -3,7 +3,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/authView/login";
 
 const Stack = createStackNavigator();
-
 const AuthStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{

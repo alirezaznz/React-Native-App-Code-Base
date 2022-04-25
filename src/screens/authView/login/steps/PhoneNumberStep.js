@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dimensions, StyleSheet, View, TouchableOpacity} from 'react-native';
-import {MText, Input, Button} from '../../../components/common';
+import {MText, Input, Button} from './../../../../components/common';
 
 const {width} = Dimensions.get('window');
 

@@ -4,7 +4,8 @@ import {
   ActivityIndicator,
   ImageBackground,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  I18nManager
 } from 'react-native';
 import { Images } from "./../../constants"
 import { LocalStorage } from "./../../util";
@@ -13,11 +14,14 @@ const Loading = ({ navigation }) => {
 
   // check if we should navigate to intro page
   useEffect(() => {
+    //todo we should check language and force RTL or not
+    I18nManager.forceRTL(true);
+    I18nManager.swapLeftAndRightInRTL(true);
     (async () => {
       const introAlreadySeen = await LocalStorage.getItem('introAlreadySeen');
       if (introAlreadySeen !== true) {
         //await LocalStorage.setItem('introAlreadySeen', true)
-        setTimeout(() => navigation.replace("Intor"), 2000)
+        setTimeout(() => navigation.replace("Intor"), 100)
       }
     })()
   }, [])

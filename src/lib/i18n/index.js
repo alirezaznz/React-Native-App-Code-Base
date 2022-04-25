@@ -3,11 +3,6 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import HttpApi from "i18next-http-backend";
 
-// {
-//   en: require("./resource/en.json"),
-//   ir: require("./resource/ir.json"),
-//   tr: require("./resource/tr.json"),
-// }
 const resources = {
   ir: {translation: require("./resource/ir.json")},
   en: {translation: require("./resource/en.json")},

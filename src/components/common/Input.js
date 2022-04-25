@@ -289,7 +289,7 @@ const s = StyleSheet.create({
     // backgroundColor: STYLES.Color.inputBg,
   },
   input: {
-    fontFamily: STYLES.Fonts.input,
+    //fontFamily: STYLES.Fonts.input,
     fontSize: 14,
     width: '100%',
     padding: 0,

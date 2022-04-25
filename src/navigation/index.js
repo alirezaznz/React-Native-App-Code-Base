@@ -1,5 +1,4 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import UserStackNavigator from './UserNavigation';
 import AuthStackNavigation from './AuthNavigation';
@@ -14,8 +13,8 @@ const AppNavigation = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      {/* <Stack.Screen name="Loading" component={Loading} />
-      <Stack.Screen name="Intor" component={AppIntro} /> */}
+      <Stack.Screen name="Loading" component={Loading} />
+      <Stack.Screen name="Intor" component={AppIntro} />
       <Stack.Screen name="AuthNav" component={AuthStackNavigation} />
       <Stack.Screen name="UserNav" component={UserStackNavigator} />
     </Stack.Navigator>

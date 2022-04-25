@@ -1,15 +1,15 @@
-import React from "react";
-import { View, Dimensions, StyleSheet, Text, Image } from "react-native";
+import React from 'react';
+import {View, Dimensions, StyleSheet, Text, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { MText } from "./../../components/common"
-import { useTranslation } from 'react-i18next';
-import { Images } from "../../constants"
-const { width, height } = Dimensions.get('window');
+import {MText} from './../../components/common';
+import {useTranslation} from 'react-i18next';
+import {Images} from '../../constants';
+const {width, height} = Dimensions.get('window');
 const paddingBottom = height / 4;
 const dotSize = 9;
 
-const AppIntor = ({ navigation }) => {
-  const { t: translate } = useTranslation();
+const AppIntor = ({navigation}) => {
+  const {t: translate} = useTranslation();
 
   const slides = [
     {
@@ -27,41 +27,41 @@ const AppIntor = ({ navigation }) => {
     {
       key: 4,
       image: Images.Intro4,
-    }
+    },
   ];
 
-  _renderItem = ({ item }) => {
+  const _renderItem = ({item}) => {
     return (
       <View style={styles.slide}>
         <Image source={item.image} style={styles.slideImage} />
-        <MText type="heading1">{translate(`IntroPage.Intro${item.key}.title`)}</MText>
-        <MText style={styles.slideDesc}>{translate(`IntroPage.Intro${item.key}.text`)}</MText>
+        <MText type="heading1">
+          {translate(`IntroPage.Intro${item.key}.title`)}
+        </MText>
+        <MText style={styles.slideDesc}>
+          {translate(`IntroPage.Intro${item.key}.text`)}
+        </MText>
       </View>
     );
-  }
-  _renderNextButton = () => {
-    return (
-      <Text>{translate("Common.next")}</Text>
-    );
   };
-  _renderDoneButton = () => {
-    return (
-      <Text>{translate("Common.done")}</Text>
-    );
+  const _renderNextButton = () => {
+    return <Text>{translate('Common.next')}</Text>;
+  };
+
+  const _renderDoneButton = () => {
+    return <Text>{translate('Common.done')}</Text>;
   };
 
   return (
     <AppIntroSlider
-      renderItem={this._renderItem}
+      renderItem={_renderItem}
       data={slides}
       renderNextButton={_renderNextButton}
       renderDoneButton={_renderDoneButton}
       onDone={() => {
-        navigation.replace("AuthNav")
+        navigation.replace('AuthNav');
       }}
     />
   );
-
 };
 
 const styles = StyleSheet.create({

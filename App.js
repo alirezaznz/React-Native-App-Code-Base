@@ -4,19 +4,19 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import Store from './src/redux';
 import AppNavigation from './src/navigation';
-import {ThemeContext, themes} from './src/constants/theme-context';
+import {ThemeContext, themes} from './src/constants/themeContext';
 import {KEYS} from 'src/constants';
 
-const checkCodePushUpdate = () => {
-  return codePush.sync({
-    checkFrequency: codePush.CheckFrequency.ON_APP_START,
-    installMode: codePush.InstallMode.ON_NEXT_RESTART,
-    deploymentKey:
-      Platform.OS === 'android'
-        ? KEYS.ANDROID_PRODUCTION_SECRET
-        : KEYS.IOS_PRODUCTION_SECRET,
-  });
-};
+// const checkCodePushUpdate = () => {
+//   return codePush.sync({
+//     checkFrequency: codePush.CheckFrequency.ON_APP_START,
+//     installMode: codePush.InstallMode.ON_NEXT_RESTART,
+//     deploymentKey:
+//       Platform.OS === 'android'
+//         ? KEYS.ANDROID_PRODUCTION_SECRET
+//         : KEYS.IOS_PRODUCTION_SECRET,
+//   });
+// };
 
 const App = () => {
   const [themeMode, setThemeMode] = useState('light');

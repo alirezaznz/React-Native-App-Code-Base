@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {View, Dimensions} from 'react-native';
 import PropTypes from 'prop-types';
-import {ThemeContext, theme} from 'src/constants/theme-context';
+import {ThemeContext, theme} from 'src/constants/themeContext';
 
 // interface BoxProps extends React.ComponentProps<typeof View> {
 //   padding?: keyof typeof theme.spacing

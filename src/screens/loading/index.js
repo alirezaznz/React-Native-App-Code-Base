@@ -12,11 +12,16 @@ import { LocalStorage } from "./../../util";
 
 const Loading = ({ navigation }) => {
 
-  // check if we should navigate to intro page
+  // check locale
   useEffect(() => {
     //todo we should check language and force RTL or not
     I18nManager.forceRTL(true);
     I18nManager.swapLeftAndRightInRTL(true);
+    //handle change lang
+  }, [])
+
+  // check if we should navigate to intro page
+  useEffect(() => {
     (async () => {
       const introAlreadySeen = await LocalStorage.getItem('introAlreadySeen');
       if (introAlreadySeen !== true) {

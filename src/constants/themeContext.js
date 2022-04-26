@@ -34,9 +34,10 @@ export const theme = {
       fontSize: 16,
     },
     breakpoints: {
-      smallPhone: 0,
-      phone: 321,
-      tablet: 768,
+      s: 0,
+      m: 321,
+      l: 768,
+      xl: 1028
     },
   },
 };

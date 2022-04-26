@@ -2,7 +2,8 @@ import React from 'react';
 import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import PropTypes from 'prop-types';
 import {Touchable} from './Touchable';
-import {STYLES} from '../../constants';
+// @ts-ignore
+import {STYLES} from '@Constants';
 import {MText} from './MText';
 // import {MIcon} from './MIcon';
 // import {ShadowBox} from './ShadowBox';

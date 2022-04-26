@@ -13,7 +13,7 @@ export const LocalStorage = {
     const items = typeof data === 'string' ? data : JSON.stringify(data);
     await AsyncStorage.setItem(key, items);
   },
-  remove: async key => await ASyncStorage.removeItem(key),
+  remove: async key => await AsyncStorage.removeItem(key),
   getItem: async key => {
     const value = await AsyncStorage.getItem(key);
     return json(value);

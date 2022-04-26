@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text} from 'react-native';
 import PropTypes from 'prop-types';
 
-import {STYLES} from '../../constants';
+import {STYLES} from '@Constants';
 
 const MText = ({type, children, style, light, dark, align, bold, ...props}) => {
   return (

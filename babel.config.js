@@ -17,7 +17,11 @@ module.exports = {
           '.json',
         ],
         alias: {
-          '@app/constants': './src/constants',
+          '@Constants': './src/constants',
+          '@Utils': './src/utils',
+          '@Services': './src/services',
+          '@Reducers': './src/redux/sliceReducers',
+          '@Components': './src/components',
         },
       },
     ],

@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Dimensions, StyleSheet, Text, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import {MText} from './../../components/common';
+import {MText} from '@Components';
 import {useTranslation} from 'react-i18next';
-import {Images} from '../../constants';
+import {Images} from '@Constants';
 const {width, height} = Dimensions.get('window');
 const paddingBottom = height / 4;
 const dotSize = 9;

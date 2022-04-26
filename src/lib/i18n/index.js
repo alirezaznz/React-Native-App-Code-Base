@@ -4,8 +4,11 @@ import { initReactI18next } from "react-i18next";
 import HttpApi from "i18next-http-backend";
 
 const resources = {
+  // @ts-ignore
   ir: {translation: require("./resource/ir.json")},
+  // @ts-ignore
   en: {translation: require("./resource/en.json")},
+  // @ts-ignore
   tr: {translation: require("./resource/tr.json")}
 };
 

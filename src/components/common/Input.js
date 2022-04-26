@@ -3,12 +3,11 @@ import {View, StyleSheet, TextInput, Platform} from 'react-native';
 // import {observer} from 'mobx-react';
 // import validate from 'validate.js';
 
-import {STYLES} from '../../constants';
-import {MText} from './MText';
+import {STYLES} from '@Constants';
+import {MText, Touchable} from '@Components';
 
 // import {useStore} from '../../hooks';
-import {putCommas, toEnglishDigits} from '../../utils';
-import {Touchable} from './Touchable';
+import {putCommas, toEnglishDigits} from '@Utils';
 
 const Input = ({
   oneLine = false,

@@ -8,8 +8,8 @@ import {
   I18nManager,
   Platform
 } from 'react-native';
-import {Images} from './../../constants';
-import {LocalStorage} from './../../utils';
+import {Images} from '@Constants';
+import {LocalStorage} from '@Utils';
 
   // check locale
 const Loading = ({navigation}) => {

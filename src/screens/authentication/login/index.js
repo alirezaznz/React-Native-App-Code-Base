@@ -14,10 +14,10 @@ import Svg, {Circle, Defs, LinearGradient, Stop} from 'react-native-svg';
 import {TabView} from 'react-native-tab-view';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {MText} from './../../../components/common';
-import {Images, LOGIN_CONST} from './../../../constants';
-import {checkAuth} from './../../../redux/sliceReducers/user';
-import {layoutAnimation} from './../../../utils';
+import {MText} from '@Components';
+import {Images, LOGIN_CONST} from '@Constants';
+import {checkAuth} from '@Reducers';
+import {layoutAnimation} from '@Utils';
 import {PhoneNumberStep} from './steps';
 
 const {width, height} = Dimensions.get('window');

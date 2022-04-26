@@ -1,6 +1,7 @@
 {
-    "compilerOptions": {
-      "baseUrl": "./",
+  "compilerOptions": {
+    "outDir": "build",
+      "baseUrl": ".",
       "paths": {
         "@Constants": ["./src/constants/*"],
         "@Utils": ["./src/utils/*"],
@@ -9,8 +10,14 @@
         "@Components": ["./src/components/*"],
       },
       "checkJs": true,
+      "allowJs": true,
+      
       "jsx": "react",
+      // "tsx": "react",
       "allowSyntheticDefaultImports": true
-    },
-    "exclude": ["node_modules"]
-  }
+      },
+    "include": [
+        "./src/",
+      ],
+  "exclude": ["node_modules"]
+}

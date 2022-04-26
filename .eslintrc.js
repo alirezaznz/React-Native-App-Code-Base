@@ -1,20 +1,29 @@
 module.exports = {
-  root: true,
-  plugins: ['module-resolver', 'import'],
-  rules: {
-    curly: 'off',
-    'module-resolver/use-alias': 2,
+  'import/parsers': {
+    '@babel/eslint-parser': {},
   },
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: {jsx: true},
-  },
-  extends: '@react-native-community',
-  settings: {
-    'import/resolver': {
-      'babel-module': {allowExistingDirectories: true},
+    babelOptions: {
+      configFile: './babel.config.js',
     },
   },
+
+  root: true,
+  rules: {
+    curly: 'off',
+  },
+  settings: {
+    'import/resolver': {
+      'babel-module': {
+        root: ['.'],
+      },
+    },
+  },
+  plugins: ['babel', 'import', 'react'],
+
+  extends: '@react-native-community',
 };

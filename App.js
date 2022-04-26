@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import Store from './src/redux';
 import AppNavigation from './src/navigation';
-import {ThemeContext, themes, KEYS} from '@app/constants';
+import {ThemeContext, themes, KEYS} from '@Constants';
 
 // const checkCodePushUpdate = () => {
 //   return codePush.sync({

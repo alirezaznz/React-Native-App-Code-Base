@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from 'react';
 import {
   View,
   ActivityIndicator,
   ImageBackground,
   StyleSheet,
   Dimensions,
-  I18nManager
+  I18nManager,
+  Platform
 } from 'react-native';
-import { Images } from "./../../constants"
-import { LocalStorage } from "./../../util";
-
-const Loading = ({ navigation }) => {
+import {Images} from './../../constants';
+import {LocalStorage} from './../../utils';
 
   // check locale
+const Loading = ({navigation}) => {
+  // check if we should navigate to intro page
   useEffect(() => {
     //todo we should check language and force RTL or not
     I18nManager.forceRTL(true);
@@ -26,31 +27,34 @@ const Loading = ({ navigation }) => {
       const introAlreadySeen = await LocalStorage.getItem('introAlreadySeen');
       if (introAlreadySeen !== true) {
         //await LocalStorage.setItem('introAlreadySeen', true)
-        setTimeout(() => navigation.replace("Intor"), 100)
+        setTimeout(() => navigation.replace('Intor'), 100);
       }
-    })()
-  }, [])
+    })();
+  }, []);
 
   return (
-    <ImageBackground source={Images.SplashImage} style={styles.container} resizeMode={'cover'}>
+    <ImageBackground
+      source={Images.SplashImage}
+      style={styles.container}
+      resizeMode={'cover'}>
       <View style={styles.indicatorWrapper}>
         <ActivityIndicator
-          style={{ marginBottom: '15%' }}
+          style={{marginBottom: '15%'}}
           size="large"
-        // color={STYLES.Color.success}
+          // color={STYLES.Color.success}
         />
       </View>
     </ImageBackground>
   );
 };
 
-const stepSize = Platform.select({ ios: 70, android: 60 });
-const { width, height } = Dimensions.get('window');
+const stepSize = Platform.select({ios: 70, android: 60});
+const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    transform: [{ scaleX: 1.1 }],
+    transform: [{scaleX: 1.1}],
   },
   splash: {
     width: '100%',
@@ -107,10 +111,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  passWrapper: { width: '100%', height: '90%', alignItems: 'center' },
+  passWrapper: {width: '100%', height: '90%', alignItems: 'center'},
   //sells: {backgroundColor: STYLES.Color.thirdBg, marginLeft: 8, marginRight: 8},
-  passText: { marginTop: '3%', fontSize: 15 },
-  pinText: { marginTop: '10%' },
+  passText: {marginTop: '3%', fontSize: 15},
+  pinText: {marginTop: '10%'},
 });
 
 export default Loading;

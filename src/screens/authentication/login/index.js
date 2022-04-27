@@ -16,7 +16,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {MText} from '@Components';
 import {Images, LOGIN_CONST} from '@Constants';
-import {checkAuth} from '@Reducers';
+import {checkAuth} from '@Constants';
 import {layoutAnimation} from '@Utils';
 import {PhoneNumberStep} from './steps';
 

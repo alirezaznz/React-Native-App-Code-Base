@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "outDir": "build",
       "baseUrl": ".",
       "paths": {
@@ -9,7 +10,7 @@
         "@Reducers": ["./src/redux/sliceReducers/*"],
         "@Components": ["./src/components/*"],
       },
-      "checkJs": true,
+      "checkJs": false,
       "allowJs": true,
       
       "jsx": "react",
@@ -17,7 +18,8 @@
       "allowSyntheticDefaultImports": true
       },
     "include": [
-        "./src/",
+        "*",
+        // "App.jsx"
       ],
   "exclude": ["node_modules"]
 }

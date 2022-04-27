@@ -2,24 +2,33 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "outDir": "build",
-      "baseUrl": ".",
-      "paths": {
-        "@Constants": ["./src/constants/*"],
-        "@Utils": ["./src/utils/*"],
-        "@Services": ["./src/services/*"],
-        "@Reducers": ["./src/redux/sliceReducers/*"],
-        "@Components": ["./src/components/*"],
+    "baseUrl": ".",
+    "target": "esnext",
+    "paths": {
+      "@Constants": ["src/constants"],
+      "@Utils": ["src/utils"],
+      "@Services": ["src/services"],
+      "@Reducers": ["src/redux/sliceReducers"],
+      "@Components": ["src/components"],
+    },
+      // "checkJs": false,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-native",
+    "lib": ["es2017"],
+    "noEmit": true,
+    "strict": true,
       },
-      "checkJs": false,
-      "allowJs": true,
-      
-      "jsx": "react",
-      // "tsx": "react",
-      "allowSyntheticDefaultImports": true
-      },
-    "include": [
-        "*",
-        // "App.jsx"
-      ],
-  "exclude": ["node_modules"]
+    // "include": [
+    //     "*",
+    //     // "App.jsx"
+    //   ],
+      "exclude": [
+        "node_modules",
+        "babel.config.js",
+        "metro.config.js",
+        "jest.config.js"
+      ]
 }

@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import ReactNativeBiometrics from 'react-native-biometrics'
+import React, {useEffect, useState} from 'react';
 import {
   View,
   ActivityIndicator,
@@ -11,8 +12,23 @@ import {
 import {Images} from '@Constants';
 import {LocalStorage} from '@Utils';
 
+
   // check locale
 const Loading = ({navigation}) => {
+
+  const [bioIsAvailable, setBioAvailability] = useState(undefined)
+
+  //biometrics check
+  useEffect(() =>{
+    if(bioIsAvailable === undefined){
+      biometricsCheck()
+    }else if(bioIsAvailable === true){
+      getBioKey()
+    }else{
+      //todo open modal to enter pin code
+    }
+  },[bioIsAvailable])
+
   // check if we should navigate to intro page
   useEffect(() => {
     //todo we should check language and force RTL or not
@@ -31,6 +47,47 @@ const Loading = ({navigation}) => {
       }
     })();
   }, []);
+
+  const biometricsCheck = async ()=>{
+    ReactNativeBiometrics.isSensorAvailable()
+    .then((resultObject) => {
+      const { available, biometryType } = resultObject
+  
+      if (available && biometryType === ReactNativeBiometrics.TouchID) {
+        console.log("bio available: ", true)
+        setBioAvailability(true)
+      } else if (available && biometryType === ReactNativeBiometrics.FaceID) {
+        setBioAvailability(true)
+        console.log("bio available: ", true)
+      } else if (available && biometryType === ReactNativeBiometrics.Biometrics) {
+        setBioAvailability(true)
+        console.log("bio available: ", true)
+      } else {
+        setBioAvailability(false)
+        console.log("bio available: ", false)
+      }
+    })
+  }
+
+  const getBioKey = () =>{
+    let epochTimeSeconds = Math.round((new Date()).getTime() / 1000).toString()
+    let payload = epochTimeSeconds + 'some message'
+ 
+    ReactNativeBiometrics.createSignature({
+      promptMessage: 'Sign in',
+      payload: payload
+    })
+    .then((resultObject) => {
+      const { success, signature } = resultObject
+      console.log("create sig result: ", success, signature)
+      if (success) {
+        console.log(signature)
+        
+      }
+    }).catch((e)=>{
+      console.log("failed to create sig: ", e)
+    })
+  }
 
   return (
     <ImageBackground

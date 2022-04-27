@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import Store from './src/redux';
 import AppNavigation from './src/navigation';
-import {ThemeContext, themes, KEYS} from '@Constants';
+import {ThemeContext, themes, ENV} from '@Constants';
 
 // const checkCodePushUpdate = () => {
 //   return codePush.sync({
@@ -12,8 +12,8 @@ import {ThemeContext, themes, KEYS} from '@Constants';
 //     installMode: codePush.InstallMode.ON_NEXT_RESTART,
 //     deploymentKey:
 //       Platform.OS === 'android'
-//         ? KEYS.ANDROID_PRODUCTION_SECRET
-//         : KEYS.IOS_PRODUCTION_SECRET,
+//         ? ENV.ANDROID_PRODUCTION_SECRET
+//         : ENV.IOS_PRODUCTION_SECRET,
 //   });
 // };
 

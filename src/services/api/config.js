@@ -1,9 +1,9 @@
 import axios from "axios";
-import { KEYS } from '@Constants';
+import { ENV } from '@Constants';
 import { HandleAPIErrorPayload } from "./handler";
 
 const API = axios.create({
-    baseURL: KEYS.baseURL,
+    baseURL: ENV.baseURL,
     headers: {
         "Content-Type": "application/json",
     },

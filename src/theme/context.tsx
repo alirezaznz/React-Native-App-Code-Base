@@ -1,4 +1,5 @@
 import React from 'react';
+import { Theme, ThemeModes } from './interfaces';
 
 const palette = {
   purple: '#5A31F4',
@@ -8,7 +9,7 @@ const palette = {
   white: '#F0F2F3',
 };
 
-export const theme = {
+export const theme: Theme = {
   colors: {
     background: palette.white,
     foreground: palette.black,
@@ -18,10 +19,16 @@ export const theme = {
     failure: palette.red,
   },
   spacing: {
+    default: 0,
     s: 8,
     m: 16,
     l: 24,
     xl: 40,
+  },
+  breakpoints: {
+    smallPhone: 0,
+    phone: 321,
+    tablet: 768,
   },
   textVariants: {
     header: {
@@ -33,16 +40,10 @@ export const theme = {
       fontFamily: 'Merriweather',
       fontSize: 16,
     },
-    breakpoints: {
-      s: 0,
-      m: 321,
-      l: 768,
-      xl: 1028
-    },
   },
 };
 
-export const themes = {
+export const themes: ThemeModes = {
   light: {
     ...theme,
     colors: {

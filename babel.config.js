@@ -24,6 +24,7 @@ module.exports = {
           {'@Services': './src/services'},
           {'@Reducers': './src/redux/sliceReducers'},
           {'@Components': './src/components'},
+          {'@Theme': './src/theme'},
         ],
       },
     ],

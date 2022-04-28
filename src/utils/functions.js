@@ -1,11 +1,5 @@
 import {LayoutAnimation, Platform, Dimensions} from 'react-native';
 
-// export function getMainHeight() {
-//   return (
-//     Dimensions.get('window').height - getStatusBarHeight() - getBottomSpace()
-//   );
-// }
-
 export function layoutAnimation() {
   const CustomLayoutSpring = {
     duration: Platform.select({ios: 600, android: 800}),

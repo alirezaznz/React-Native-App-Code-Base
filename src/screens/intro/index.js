@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, Dimensions, StyleSheet, Text, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import {MText} from '@Components';
+import {MText, Box} from '@Components';
 import {useTranslation} from 'react-i18next';
 import {Images} from '@Constants';
+
 const {width, height} = Dimensions.get('window');
 const paddingBottom = height / 4;
 const dotSize = 9;
@@ -32,7 +33,7 @@ const AppIntor = ({navigation}) => {
 
   const _renderItem = ({item}) => {
     return (
-      <View style={styles.slide}>
+      <Box>
         <Image source={item.image} style={styles.slideImage} />
         <MText type="heading1">
           {translate(`IntroPage.Intro${item.key}.title`)}
@@ -40,7 +41,7 @@ const AppIntor = ({navigation}) => {
         <MText style={styles.slideDesc}>
           {translate(`IntroPage.Intro${item.key}.text`)}
         </MText>
-      </View>
+      </Box>
     );
   };
   const _renderNextButton = () => {

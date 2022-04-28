@@ -18,6 +18,22 @@ const Loading = ({navigation}) => {
 
   const [bioIsAvailable, setBioAvailability] = useState(undefined)
 
+
+  useEffect(() =>{
+    // orderServices
+    //     .orderLogin(data)
+    //     .then((res) => {
+    //       let order_access_token = `Bearer ${res.data.token}`;
+    //       orderAPI.defaults.headers["Authorization"] = order_access_token;
+    //       orderAPI.defaults.headers.Authorization = order_access_token;
+    //       res.data = makeIt(JSON.stringify(res.data));
+    //       localStorage.setItem(CONST.token, res.data);
+    //       resolve();
+    //     })
+    //     .catch((err) => {
+    //       reject(err);
+    //     });
+  }, [])
   //biometrics check
   useEffect(() =>{
     if(bioIsAvailable === undefined){

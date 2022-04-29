@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import Store from './src/redux';
 import AppNavigation from './src/navigation';
 import {ThemeContext, themes, ENV} from '@Theme';
+import { NativeModules, Text } from 'react-native';
 
 // const checkCodePushUpdate = () => {
 //   return codePush.sync({
@@ -19,9 +20,10 @@ import {ThemeContext, themes, ENV} from '@Theme';
 
 const App = () => {
   const [themeMode, setThemeMode] = useState('light');
-
+  const env = NativeModules.RNConfig.env
   return (
     <ThemeContext.Provider value={themes[themeMode]}>
+      <Text style={{paddingTop: 150, fontSize: 38}}>Your are using: {env}</Text>
       <Provider store={Store}>
         <NavigationContainer>
           <AppNavigation />

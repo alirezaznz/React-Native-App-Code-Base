@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import Store from './src/redux';
 import AppNavigation from './src/navigation';
-import { ThemeContext, themes, ENV } from '@Theme';
+import { ThemeContext, themes } from '@Theme';
+import { ENV } from "@Constants"
 import { NativeModules, Text } from 'react-native';
 
 // const checkCodePushUpdate = () => {
@@ -20,11 +21,17 @@ import { NativeModules, Text } from 'react-native';
 
 const App = () => {
   const [themeMode, setThemeMode] = useState('light');
-  const env = NativeModules.RNConfig.env
+
   return (
     <ThemeContext.Provider value={themes[themeMode]}>
       {
-        env != "prod" ? <Text style={{ fontSize: 12, position: 'absolute', top: 30, right: 10, zIndex: 999, color: "red" }}>env: {env}</Text> : null
+        ENV.name != "prod" &&
+        <Text
+          style={{
+            fontSize: 12,
+            position: 'absolute',
+            top: 30, right: 10, zIndex: 999, color: "red"
+          }}>env: {ENV.name}</Text>
       }
       <Provider store={Store}>
         <NavigationContainer>

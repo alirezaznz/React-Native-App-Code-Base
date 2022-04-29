@@ -10,6 +10,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.arzinja.newarchitecture.MainApplicationReactNativeHost;
+import com.instabug.reactlibrary.RNInstabugReactnativePackage;
 import java.lang.reflect.InvocationTargetException;
 import com.microsoft.codepush.react.CodePush;
 import java.util.List;

@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "androidStage": "react-native run-android --variant Stagedebug",
+    "androidBeta": "react-native run-android --variant Betadebug",
+    "androidPreProd": "react-native run-android --variant PreProddebug",
+    "androidProd": "react-native run-android --variant Proddebug",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",

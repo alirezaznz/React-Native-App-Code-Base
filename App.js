@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 // import codePush from 'react-native-code-push';
-import {NavigationContainer} from '@react-navigation/native';
-import {Provider} from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
 import Store from './src/redux';
 import AppNavigation from './src/navigation';
-import {ThemeContext, themes, ENV} from '@Theme';
+import { ThemeContext, themes, ENV } from '@Theme';
 import { NativeModules, Text } from 'react-native';
 
 // const checkCodePushUpdate = () => {
@@ -23,7 +23,9 @@ const App = () => {
   const env = NativeModules.RNConfig.env
   return (
     <ThemeContext.Provider value={themes[themeMode]}>
-      <Text style={{paddingTop: 150, fontSize: 38}}>Your are using: {env}</Text>
+      {
+        env != "prod" ? <Text style={{ fontSize: 12, position: 'absolute', top: 30, right: 10, zIndex: 999, color: "red" }}>env: {env}</Text> : null
+      }
       <Provider store={Store}>
         <NavigationContainer>
           <AppNavigation />

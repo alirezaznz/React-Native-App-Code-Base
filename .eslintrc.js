@@ -2,6 +2,9 @@ module.exports = {
   'import/parsers': {
     '@babel/eslint-parser': {},
   },
+  env: {
+    jest: true
+  },
   parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 6,

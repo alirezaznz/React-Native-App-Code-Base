@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import codePush from 'react-native-code-push';
+// import codePush from 'react-native-code-push';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import Store from './src/redux';
 import AppNavigation from './src/navigation';
-import {ThemeContext, themes, ENV} from '@Constants';
+import {ThemeContext, themes, ENV} from '@Theme';
 
 // const checkCodePushUpdate = () => {
 //   return codePush.sync({

@@ -17,6 +17,7 @@
     "@react-navigation/native-stack": "^6.6.1",
     "@react-navigation/stack": "^6.2.1",
     "@reduxjs/toolkit": "^1.8.1",
+    "@types/jest": "^27.4.1",
     "axios": "^0.27.2",
     "color": "^4.2.3",
     "i18next": "^21.6.16",
@@ -60,9 +61,12 @@
     "eslint-plugin-module-resolver": "^1.4.0",
     "jest": "26.6.3",
     "metro-react-native-babel-preset": "0.67.0",
-    "react-test-renderer": "17.0.2"
+    "react-test-renderer": "^18.1.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": [
+      "<rootDir>/jestSetup.js"
+    ]
   }
 }

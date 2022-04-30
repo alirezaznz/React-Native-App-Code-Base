@@ -26,4 +26,8 @@ RCT_EXPORT_MODULE()
  return @{ @"env": env };
 }
 
+- (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
 @end

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 // import codePush from 'react-native-code-push';
 import { NavigationContainer } from '@react-navigation/native';
-import { Provider } from 'react-redux';
-import Store from './src/redux';
 import AppNavigation from './src/navigation';
 import { ThemeContext, themes } from '@Theme';
 import { ENV } from "@Constants"
@@ -33,11 +31,9 @@ const App = () => {
             top: 30, right: 10, zIndex: 999, color: "red"
           }}>env: {ENV.name}</Text>
       }
-      <Provider store={Store}>
-        <NavigationContainer>
-          <AppNavigation />
-        </NavigationContainer>
-      </Provider>
+      <NavigationContainer>
+        <AppNavigation />
+      </NavigationContainer>
     </ThemeContext.Provider>
   );
 };

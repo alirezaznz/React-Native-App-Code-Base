@@ -22,7 +22,7 @@ module.exports = {
           {'@Constants': './src/constants'},
           {'@Utils': './src/utils'},
           {'@Services': './src/services'},
-          {'@Reducers': './src/redux/sliceReducers'},
+          {'@Actions': './src/redux/sliceReducers'},
           {'@Components': './src/components'},
           {'@Theme': './src/theme'},
         ],

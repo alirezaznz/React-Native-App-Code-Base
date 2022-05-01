@@ -22,6 +22,7 @@
     "@reduxjs/toolkit": "^1.8.1",
     "@types/jest": "^27.4.1",
     "axios": "^0.27.2",
+    "axios-cache-adapter": "^2.7.3",
     "color": "^4.2.3",
     "i18next": "^21.6.16",
     "i18next-http-backend": "^1.4.0",

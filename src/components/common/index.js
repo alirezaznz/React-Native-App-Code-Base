@@ -4,3 +4,4 @@ export * from './MText';
 export * from './Touchable';
 export * from './Box';
 export * from './RNText';
+export * from './Picker';

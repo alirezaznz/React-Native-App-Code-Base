@@ -1,4 +1,5 @@
 import React from 'react';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Theme, ThemeModes } from './interfaces';
 
 const palette = {

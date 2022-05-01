@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Dimensions, StyleSheet, Text, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import {MText, Box} from '@Components';
+import {MText, Box, DropDown, Picker} from '@Components';
 import {useTranslation} from 'react-i18next';
 import {Images} from '@Constants';
 
@@ -31,6 +31,8 @@ const AppIntor = ({navigation}) => {
     },
   ];
 
+  const selectLang = value => {};
+
   const _renderItem = ({item}) => {
     return (
       <Box>
@@ -38,6 +40,16 @@ const AppIntor = ({navigation}) => {
         <MText type="heading1">
           {translate(`IntroPage.Intro${item.key}.title`)}
         </MText>
+        <Picker
+          backgroundColor={'danger'}
+          style={{width: 100, height: 50}}
+          items={[
+            {label: 'English', value: 'en'},
+            {label: 'Persian', value: 'per'},
+          ]}
+          onChange={selectLang}
+        />
+
         <MText style={styles.slideDesc}>
           {translate(`IntroPage.Intro${item.key}.text`)}
         </MText>

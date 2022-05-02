@@ -6,10 +6,11 @@ interface BoxProps extends React.ComponentProps<typeof View> {
   padding?: keyof Spacing | ResponsiveValue
   margin?: keyof Spacing | ResponsiveValue
   backgroundColor: keyof typeof theme.colors
-  style: ViewStyle
+  style: ViewStyle,
+  children: React.ReactNode
 }
 
-const Box: FC<BoxProps> = ({style, padding, margin, backgroundColor , ...rest}) => {
+const Box: FC<BoxProps> = ({style, padding, margin, backgroundColor ,children, ...rest}) => {
   const theme = useContext(ThemeContext);
 
   return (
@@ -21,7 +22,9 @@ const Box: FC<BoxProps> = ({style, padding, margin, backgroundColor , ...rest}) 
         ...style,
       }}
       {...rest}
-    />
+    >
+      {children}
+      </View>
   );
 };
 

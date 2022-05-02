@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ENV } from '@Constants';
-import { HandleAPIErrorPayload } from "./handler";
+import { HandleAPIErrorPayload } from "./errorHandler";
 
 const API = axios.create({
     baseURL: ENV.baseURL,

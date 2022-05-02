@@ -1,1 +1,2 @@
-import * from "./authAPI"
+export * from "./authentication"
+export * from "./common"

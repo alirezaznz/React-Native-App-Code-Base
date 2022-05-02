@@ -1,5 +1,5 @@
 import ReactNativeBiometrics from 'react-native-biometrics';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   ActivityIndicator,
@@ -9,11 +9,12 @@ import {
   I18nManager,
   Platform,
 } from 'react-native';
-import {Images} from '@Constants';
-import {LocalStorage} from '@Utils';
+import { Images } from '@Constants';
+import { Picker } from "@Components"
+import { LocalStorage } from '@Utils';
 
 // check locale
-const Loading = ({navigation}) => {
+const Loading = ({ navigation }) => {
   const [bioIsAvailable, setBioAvailability] = useState(undefined);
 
   useEffect(() => {
@@ -56,14 +57,14 @@ const Loading = ({navigation}) => {
       const introAlreadySeen = await LocalStorage.getItem('introAlreadySeen');
       if (introAlreadySeen !== true) {
         //await LocalStorage.setItem('introAlreadySeen', true)
-        setTimeout(() => navigation.replace('Intor'), 100);
+        //setTimeout(() => navigation.replace('Intor'), 100);
       }
     })();
   }, []);
 
   const biometricsCheck = async () => {
     ReactNativeBiometrics.isSensorAvailable().then(resultObject => {
-      const {available, biometryType} = resultObject;
+      const { available, biometryType } = resultObject;
 
       if (available && biometryType === ReactNativeBiometrics.TouchID) {
         console.log('bio available: ', true);
@@ -93,7 +94,7 @@ const Loading = ({navigation}) => {
       payload: payload,
     })
       .then(resultObject => {
-        const {success, signature} = resultObject;
+        const { success, signature } = resultObject;
         console.log('create sig result: ', success, signature);
         if (success) {
           console.log(signature);
@@ -104,29 +105,40 @@ const Loading = ({navigation}) => {
       });
   };
 
+  const selectLang = value => { };
+
   return (
     <ImageBackground
       source={Images.SplashImage}
       style={styles.container}
       resizeMode={'cover'}>
       <View style={styles.indicatorWrapper}>
+        <Picker
+          backgroundColor={'danger'}
+          style={{ width: 100, height: 50 }}
+          items={[
+            { label: 'English', value: 'en' },
+            { label: 'Persian', value: 'per' },
+          ]}
+          onChange={selectLang}
+        />
         <ActivityIndicator
-          style={{marginBottom: '15%'}}
+          style={{ marginBottom: '15%' }}
           size="large"
-          // color={STYLES.Color.success}
+        // color={STYLES.Color.success}
         />
       </View>
     </ImageBackground>
   );
 };
 
-const stepSize = Platform.select({ios: 70, android: 60});
-const {width, height} = Dimensions.get('window');
+const stepSize = Platform.select({ ios: 70, android: 60 });
+const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    transform: [{scaleX: 1.1}],
+    transform: [{ scaleX: 1.1 }],
   },
   splash: {
     width: '100%',
@@ -183,10 +195,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  passWrapper: {width: '100%', height: '90%', alignItems: 'center'},
+  passWrapper: { width: '100%', height: '90%', alignItems: 'center' },
   //sells: {backgroundColor: STYLES.Color.thirdBg, marginLeft: 8, marginRight: 8},
-  passText: {marginTop: '3%', fontSize: 15},
-  pinText: {marginTop: '10%'},
+  passText: { marginTop: '3%', fontSize: 15 },
+  pinText: { marginTop: '10%' },
 });
 
 export default Loading;

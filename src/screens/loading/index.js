@@ -1,5 +1,5 @@
 import ReactNativeBiometrics from 'react-native-biometrics';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   View,
   ActivityIndicator,
@@ -8,14 +8,17 @@ import {
   Dimensions,
   I18nManager,
   Platform,
+  Image,
 } from 'react-native';
 import { Images } from '@Constants';
 import { Picker } from "@Components"
 import { LocalStorage } from '@Utils';
+import { ThemeContext } from '@Theme';
 
 // check locale
 const Loading = ({ navigation }) => {
   const [bioIsAvailable, setBioAvailability] = useState(undefined);
+  const theme = useContext(ThemeContext)
 
   useEffect(() => {
     // orderServices
@@ -46,8 +49,8 @@ const Loading = ({ navigation }) => {
   // check if we should navigate to intro page
   useEffect(() => {
     //todo we should check language and force RTL or not
-    I18nManager.forceRTL(true);
-    I18nManager.swapLeftAndRightInRTL(true);
+    I18nManager.forceRTL(false);
+    I18nManager.swapLeftAndRightInRTL(false);
     //handle change lang
   }, []);
 
@@ -113,6 +116,7 @@ const Loading = ({ navigation }) => {
       style={styles.container}
       resizeMode={'cover'}>
       <View style={styles.indicatorWrapper}>
+        <Image source={Images.Logo} style={[{width: 72, height: 72}, theme.imageTransfor]} />
         <Picker
           backgroundColor={'danger'}
           style={{ width: 100, height: 50 }}

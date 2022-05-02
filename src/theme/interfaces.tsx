@@ -51,6 +51,7 @@ export interface ResponsiveValue{
     spacing: Spacing,
     textVariants: TextVariants,
     breakpoints: BreakPoints
+    imageTransfor: {}
   }
   
   export interface ThemeModes {

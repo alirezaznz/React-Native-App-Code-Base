@@ -1,6 +1,6 @@
 import React from 'react';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Theme, ThemeModes } from './interfaces';
+import {I18nManager} from "react-native"
 
 const palette = {
   purple: '#5A31F4',
@@ -42,6 +42,7 @@ export const theme: Theme = {
       fontSize: 16,
     },
   },
+  imageTransfor: {transform: [{scaleX: I18nManager.isRTL ? -1 : 1}]}
 };
 
 export const themes: ThemeModes = {

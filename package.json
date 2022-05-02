@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "androidStage": "react-native run-android --variant Stagedebug",
-    "androidBeta": "react-native run-android --variant Betadebug",
-    "androidPreProd": "react-native run-android --variant PreProddebug",
+    "androidStage": "react-native run-android --variant Stagedebug --appIdSuffix 'stage'",
+    "androidBeta": "react-native run-android --variant Betadebug --appIdSuffix 'beta'",
+    "androidPreProd": "react-native run-android --variant PreProddebug  --appIdSuffix 'preprod'",
     "androidProd": "react-native run-android --variant Proddebug",
     "ios": "react-native run-ios",
     "start": "react-native start",

@@ -31,7 +31,7 @@
 		00E356EE1AD99517003FC87E /* arzinjaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = arzinjaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* arzinjaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = arzinjaTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Arzinja Stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arzinja Stage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* ArzHere Stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArzHere Stage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = arzinja/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = arzinja/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = arzinja/Images.xcassets; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Arzinja Stage.app */,
+				13B07F961A680F5B00A75B9A /* ArzHere Stage.app */,
 				00E356EE1AD99517003FC87E /* arzinjaTests.xctest */,
 			);
 			name = Products;
@@ -229,7 +229,7 @@
 			);
 			name = arzinja;
 			productName = arzinja;
-			productReference = 13B07F961A680F5B00A75B9A /* Arzinja Stage.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* ArzHere Stage.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -249,7 +249,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Arzinja" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "arzinja" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -551,8 +551,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arzinja.v2.stage;
-				PRODUCT_NAME = "Arzinja Stage";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arzhere.stage;
+				PRODUCT_NAME = "ArzHere Stage";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -582,8 +582,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arzinja.v2.stage;
-				PRODUCT_NAME = "Arzinja Stage";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arzhere.stage;
+				PRODUCT_NAME = "ArzHere Stage";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -820,8 +820,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arzinja.v2.beta;
-				PRODUCT_NAME = "Arzinja Beta";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arzhere.beta;
+				PRODUCT_NAME = "ArzHere Beta";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -951,8 +951,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arzinja.v2.preprod;
-				PRODUCT_NAME = "Arzinja PreProd";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arzhere.preprod;
+				PRODUCT_NAME = "ArzHere PreProd";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1082,8 +1082,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arzinja.v2;
-				PRODUCT_NAME = Arzinja;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arzhere;
+				PRODUCT_NAME = ArzHere;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1204,8 +1204,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arzinja.v2;
-				PRODUCT_NAME = Arzinja;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arzhere;
+				PRODUCT_NAME = ArzHere;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1322,8 +1322,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arzinja.v2.beta;
-				PRODUCT_NAME = "Arzinja Beta";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arzhere.beta;
+				PRODUCT_NAME = "ArzHere Beta";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1440,8 +1440,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arzinja.v2.preprod;
-				PRODUCT_NAME = "Arzinja PreProd";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arzhere.preprod;
+				PRODUCT_NAME = "ArzHere PreProd";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1504,7 +1504,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = ReleaseStage;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Arzinja" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "arzinja" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* DebugStage */,

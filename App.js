@@ -21,6 +21,7 @@ import {NetworkStateCheck} from "@Components"
 //   });
 // };
 
+
 const App = () => {
   const [themeMode, setThemeMode] = useState('light');
 
@@ -35,9 +36,10 @@ const App = () => {
             top: 30, right: 10, zIndex: 999, color: "red"
           }}>env: {ENV.name}</Text>
       }
-      <NetworkStateCheck/>
+      
       <Provider store={store}>
         <NavigationContainer>
+          <NetworkStateCheck/>
           <AppNavigation />
         </NavigationContainer>
       </Provider>

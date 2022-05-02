@@ -12,20 +12,19 @@ import {
 } from 'react-native';
 import { ENV } from "@Constants";
 
+NetInfo.configure({
+    reachabilityUrl: "https://google.com",
+    reachabilityShortTimeout: 2000, // 2 seconds
+    reachabilityRequestTimeout: 15 * 1000, // 15s
+    reachabilityTest: async response => response.status === 200,
+    reachabilityShouldRun: () => true,
+  });
+
 // check locale
-export const NetworkStateCheck = ({ }) => {
+export const NetworkStateCheck = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
 
-    const netInfo = useNetInfo(
-        // {
-        //     reachabilityUrl: "https://google.com",
-        //     reachabilityTest: async (response) => response.status === 200,
-        //     reachabilityLongTimeout: 60 * 1000, // 60s
-        //     reachabilityShortTimeout: 5 * 1000, // 5s
-        //     reachabilityRequestTimeout: 1 * 1000, // 15s
-        //     reachabilityShouldRun: () => true,
-        // }
-    );
+    const { isConnected, isInternetReachable } = useNetInfo();
 
 
     // useEffect(() => {
@@ -41,21 +40,11 @@ export const NetworkStateCheck = ({ }) => {
     // }, [netInfo])
 
     useEffect(() => {
-        // Subscribe
-        const unsubscribe = NetInfo.addEventListener(state => {
-            debugger
-            if (state.isConnected === false || state.isInternetReachable === false) {
-                setModalVisible(true)
-            } else {
-                setModalVisible(false)
-            }
-        });
-
-        // Unsubscribe
-        // return ()=> {
-        //     unsubscribe();
-        // }
-    }, [])
+        if(isConnected == null){
+            return
+        }
+        setModalVisible(!isConnected)
+    }, [isConnected])
 
     return (
         <Modal

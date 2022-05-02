@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Arzinja Stage.app"
+               BuildableName = "ArzHere Stage.app"
                BlueprintName = "arzinja"
                ReferencedContainer = "container:arzinja.xcodeproj">
             </BuildableReference>
@@ -72,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Arzinja Stage.app"
+            BuildableName = "ArzHere Stage.app"
             BlueprintName = "arzinja"
             ReferencedContainer = "container:arzinja.xcodeproj">
          </BuildableReference>

@@ -1,4 +1,4 @@
-package com.arzinja;
+package com.arzhere;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

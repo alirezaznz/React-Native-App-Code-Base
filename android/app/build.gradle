@@ -135,7 +135,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.arzinja"
+        applicationId "com.arzhere"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -247,19 +247,23 @@ android {
    flavorDimensions "env"
    productFlavors{
        Stage{
-           resValue "string", "app_name", "Arzinja Stage"
+           resValue "string", "app_name", "ArzHere Stage"
+           resValue "string", "CodePushDeploymentKey", "PRp1csOwy0fYMH7tSwpxY494EvvTugKtCnWpV"
            applicationIdSuffix ".stage"
        }
        Beta{
-           resValue "string", "app_name", "Arzinja Beta"
+           resValue "string", "app_name", "ArzHere Beta"
+           resValue "string", "CodePushDeploymentKey", "PRp1csOwy0fYMH7tSwpxY494EvvTugKtCnWpV"
            applicationIdSuffix ".beta"
        }
        PreProd{
-           resValue "string", "app_name", "Arzinja PreProd"
+           resValue "string", "app_name", "ArzHere PreProd"
+           resValue "string", "CodePushDeploymentKey", "PRp1csOwy0fYMH7tSwpxY494EvvTugKtCnWpV"
            applicationIdSuffix ".preprod"
        }
        Prod{
-           resValue "string", "app_name", "Arzinja"
+           resValue "string", "app_name", "ArzHere"
+           resValue "string", "CodePushDeploymentKey", "PRp1csOwy0fYMH7tSwpxY494EvvTugKtCnWpV"
        }
    }
 

@@ -1,4 +1,4 @@
-package com.arzinja;
+package com.arzhere;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,7 +9,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
-import com.arzinja.newarchitecture.MainApplicationReactNativeHost;
+import com.arzhere.newarchitecture.MainApplicationReactNativeHost;
 import com.instabug.reactlibrary.RNInstabugReactnativePackage;
 import java.lang.reflect.InvocationTargetException;
 import com.microsoft.codepush.react.CodePush;
@@ -35,6 +35,11 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+
+          //String codePushKey = getString(R.string.CodePushDeploymentKey);
+          //packages.add(new CodePush(codePushKey, MainApplication.this, BuildConfig.DEBUG));
+
+          packages.add(new RNConfigPackage());
           return packages;
         }
 
@@ -87,7 +92,7 @@ public class MainApplication extends Application implements ReactApplication {
          We use reflection here to pick up the class that initializes Flipper,
         since Flipper library is not available in release mode
         */
-        Class<?> aClass = Class.forName("com.arzinja.ReactNativeFlipper");
+        Class<?> aClass = Class.forName("com.arzhere.ReactNativeFlipper");
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);

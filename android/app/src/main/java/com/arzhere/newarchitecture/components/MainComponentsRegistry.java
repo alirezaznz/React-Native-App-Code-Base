@@ -1,4 +1,4 @@
-package com.arzinja.newarchitecture.components;
+package com.arzhere.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

@@ -33,7 +33,7 @@ const RNButton: FC<ButtonProps> = ({title, type, style, textStyle, onPress}) => 
     }
 
     return (
-        <TouchableOpacity style={[typeColor as StyleProp<ViewStyle>, style]} onPress={onPress}>
+        <TouchableOpacity style={[typeColor as StyleProp<ViewStyle>,{justifyContent: 'center', alignItems: 'center'}, style]} onPress={onPress}>
             <RNText style={textStyle}>{title}</RNText>
             </TouchableOpacity>
     )

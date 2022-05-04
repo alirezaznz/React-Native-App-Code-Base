@@ -1,5 +1,5 @@
 import ReactNativeBiometrics from 'react-native-biometrics';
-import React, { useEffect, useState, useContext } from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
   View,
@@ -10,21 +10,21 @@ import {
   I18nManager,
   Platform,
   Image,
-  Button
+  Button,
 } from 'react-native';
-import { Images } from '@Constants';
-import { Box, Picker } from "@Components"
-import { LocalStorage } from '@Utils';
-import { ThemeContext } from '@Theme';
-const { width, height } = Dimensions.get('window');
+import {Images} from '@Constants';
+import {Box, Picker, RNButton} from '@Components';
+import {LocalStorage} from '@Utils';
+import {ThemeContext} from '@Theme';
+const {width, height} = Dimensions.get('window');
 
 // check locale
-const Loading = ({ navigation }) => {
+const Loading = ({navigation}) => {
   const [bioIsAvailable, setBioAvailability] = useState(undefined);
-  const [selectedLang, setSelectedLang] = useState("en");
+  const [selectedLang, setSelectedLang] = useState('en');
   const [detectLocation, setDetectLocation] = useState(false);
-  const { theme, setDirection } = useContext(ThemeContext)
-  const {t: translate, i18n: langi18n} = useTranslation()
+  const {theme, setDirection} = useContext(ThemeContext);
+  const {t: translate, i18n: langi18n} = useTranslation();
   useEffect(() => {
     // orderServices
     //     .orderLogin(data)
@@ -40,8 +40,8 @@ const Loading = ({ navigation }) => {
     //       reject(err);
     //     });
     setTimeout(() => {
-      setDetectLocation(true)
-    }, 1000)
+      setDetectLocation(true);
+    }, 1000);
   }, []);
 
   //biometrics check
@@ -68,7 +68,7 @@ const Loading = ({ navigation }) => {
 
   const biometricsCheck = async () => {
     ReactNativeBiometrics.isSensorAvailable().then(resultObject => {
-      const { available, biometryType } = resultObject;
+      const {available, biometryType} = resultObject;
 
       if (available && biometryType === ReactNativeBiometrics.TouchID) {
         console.log('bio available: ', true);
@@ -98,7 +98,7 @@ const Loading = ({ navigation }) => {
       payload: payload,
     })
       .then(resultObject => {
-        const { success, signature } = resultObject;
+        const {success, signature} = resultObject;
         console.log('create sig result: ', success, signature);
         if (success) {
           console.log(signature);
@@ -110,64 +110,81 @@ const Loading = ({ navigation }) => {
   };
 
   useEffect(() => {
-    langi18n.changeLanguage(selectedLang)
-    if (selectedLang == "fa") {
+    langi18n.changeLanguage(selectedLang);
+    if (selectedLang == 'fa') {
       I18nManager.forceRTL(true);
       I18nManager.swapLeftAndRightInRTL(true);
-      setDirection("rtl")
-      
+      setDirection('rtl');
     } else {
       I18nManager.forceRTL(false);
       I18nManager.swapLeftAndRightInRTL(false);
-      setDirection("ltr")
+      setDirection('ltr');
     }
-  }, [selectedLang])
+  }, [selectedLang]);
 
   const selectLang = value => {
-    setSelectedLang(value)
+    setSelectedLang(value);
   };
 
   const getLangIcon = () => {
     switch (selectedLang) {
-      case "fa":
-        return <Image source={Images.LangFlags.fa} style={{ height: 32, width: 32, marginTop: -8 }} />
-      case "en":
-        return <Image source={Images.LangFlags.en} style={{ height: 32, width: 32, marginTop: -8 }} />
-      case "tr":
-        return <Image source={Images.LangFlags.tr} style={{ height: 32, width: 32, marginTop: -8 }} />
+      case 'fa':
+        return (
+          <Image
+            source={Images.LangFlags.fa}
+            style={{height: 32, width: 32, marginTop: -8}}
+          />
+        );
+      case 'en':
+        return (
+          <Image
+            source={Images.LangFlags.en}
+            style={{height: 32, width: 32, marginTop: -8}}
+          />
+        );
+      case 'tr':
+        return (
+          <Image
+            source={Images.LangFlags.tr}
+            style={{height: 32, width: 32, marginTop: -8}}
+          />
+        );
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   const renderSelectLang = () => {
-    return (<Box>
-      <Picker
-        style={{
-          width: width * 0.4,
-          height: height * 0.1,
-          maxHeight: 72,
-          minWidth: 172,
-          maxWidth: 256,
-          paddingHorizontal: theme.spacing.xl,
-        }}
-
-        pickerStyle={{
-          inputIOS: { color: "white" },
-          inputAndroid: { color: "white" },
-        }}
-        placeholder={{ label: 'English', value: 'en' }}
-        items={[
-          { label: 'Persian', value: 'fa' },
-          { label: 'Turkey', value: 'tr' },
-        ]}
-        onChange={selectLang}
-        Icon={getLangIcon}
-      />
-      <Button onPress={()=> navigation.replace('Intor')} title={translate("lang.Enter")} />
-    </Box>
-    )
-  }
+    return (
+      <Box>
+        <Picker
+          style={{
+            width: width * 0.4,
+            height: height * 0.1,
+            maxHeight: 72,
+            minWidth: 172,
+            maxWidth: 256,
+            paddingHorizontal: theme.spacing.xl,
+          }}
+          pickerStyle={{
+            inputIOS: {color: 'white'},
+            inputAndroid: {color: 'white'},
+          }}
+          placeholder={{label: 'English', value: 'en'}}
+          items={[
+            {label: 'Persian', value: 'fa'},
+            {label: 'Turkey', value: 'tr'},
+          ]}
+          onChange={selectLang}
+          Icon={getLangIcon}
+        />
+        <RNButton
+          onPress={() => navigation.replace('Intor')}
+          title={translate('lang.Enter')}
+        />
+      </Box>
+    );
+  };
 
   return (
     <ImageBackground
@@ -175,29 +192,26 @@ const Loading = ({ navigation }) => {
       style={styles.container}
       resizeMode={'cover'}>
       <View style={styles.indicatorWrapper}>
-        {
-          detectLocation ?
-            renderSelectLang()
-            :
-            <ActivityIndicator
-              style={{ marginBottom: '15%' }}
-              size="large"
+        {detectLocation ? (
+          renderSelectLang()
+        ) : (
+          <ActivityIndicator
+            style={{marginBottom: '15%'}}
+            size="large"
             // color={STYLES.Color.success}
-            />
-        }
-
-
+          />
+        )}
       </View>
     </ImageBackground>
   );
 };
 
-const stepSize = Platform.select({ ios: 70, android: 60 });
+const stepSize = Platform.select({ios: 70, android: 60});
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    transform: [{ scaleX: 1.1 }],
+    transform: [{scaleX: 1.1}],
   },
   splash: {
     width: '100%',
@@ -253,12 +267,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    alignSelf: "center"
+    alignSelf: 'center',
   },
-  passWrapper: { width: '100%', height: '90%', alignItems: 'center' },
+  passWrapper: {width: '100%', height: '90%', alignItems: 'center'},
   //sells: {backgroundColor: STYLES.Color.thirdBg, marginLeft: 8, marginRight: 8},
-  passText: { marginTop: '3%', fontSize: 15 },
-  pinText: { marginTop: '10%' },
+  passText: {marginTop: '3%', fontSize: 15},
+  pinText: {marginTop: '10%'},
 });
 
 export default Loading;

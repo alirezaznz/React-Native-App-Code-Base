@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Dimensions, StyleSheet, Text, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import {MText, Box} from '@Components';
+import {MText, Box, RNText} from '@Components';
 import {useTranslation} from 'react-i18next';
 import {Images} from '@Constants';
 
@@ -35,12 +35,12 @@ const AppIntor = ({navigation}) => {
     return (
       <Box>
         <Image source={item.image} style={styles.slideImage} />
-        <MText type="heading1">
+        <RNText type="heading1">
           {translate(`IntroPage.Intro${item.key}.title`)}
-        </MText>
-        <MText style={styles.slideDesc}>
+        </RNText>
+        <RNText style={styles.slideDesc}>
           {translate(`IntroPage.Intro${item.key}.text`)}
-        </MText>
+        </RNText>
       </Box>
     );
   };

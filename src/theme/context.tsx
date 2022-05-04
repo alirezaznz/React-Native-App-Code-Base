@@ -40,12 +40,12 @@ export const theme: Theme = {
   },
   textVariants: {
     header: {
-      fontFamily: 'Raleway',
+      fontFamily: 'Arial',
       fontSize: 36,
       fontWeight: 'bold',
     },
     body: {
-      fontFamily: 'Merriweather',
+      fontFamily: 'Arial',
       fontSize: 16,
     },
   },

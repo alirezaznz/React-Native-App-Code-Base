@@ -5,11 +5,11 @@ import HttpApi from "i18next-http-backend";
 
 const resources = {
   // @ts-ignore
-  ir: {translation: require("./resource/ir.json")},
+  fa: { translation: require("./resource/fa.json") },
   // @ts-ignore
-  en: {translation: require("./resource/en.json")},
+  en: { translation: require("./resource/en.json") },
   // @ts-ignore
-  tr: {translation: require("./resource/tr.json")}
+  tr: { translation: require("./resource/tr.json") }
 };
 
 i18n
@@ -18,9 +18,9 @@ i18n
   .init({
     compatibilityJSON: 'v3',
     resources,
-    lng: "ir",
+    lng: "en",
     debug: false,
-    //fallbackLng: "ir",
+    //fallbackLng: "en",
     // backend: {
     //   /* translation file path */
     //   loadPath: 

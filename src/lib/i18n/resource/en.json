@@ -3,6 +3,9 @@
         "next": "next",
         "done": "done"
     },
+    "lang": {
+        "Select Language": "Select Language"
+    },
     "IntroPage": {
         "Intro1": {
             "title": "buy/sell crypto",

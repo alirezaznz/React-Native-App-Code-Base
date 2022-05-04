@@ -14,10 +14,13 @@ import { Images } from '@Constants';
 import { Picker } from "@Components"
 import { LocalStorage } from '@Utils';
 import { ThemeContext } from '@Theme';
+const { width, height } = Dimensions.get('window');
 
 // check locale
 const Loading = ({ navigation }) => {
   const [bioIsAvailable, setBioAvailability] = useState(undefined);
+  const [selectedLang, setSelectedLang] = useState("en");
+  const [detectLocation, setDetectLocation] = useState(false);
   const theme = useContext(ThemeContext)
 
   useEffect(() => {
@@ -34,7 +37,11 @@ const Loading = ({ navigation }) => {
     //     .catch((err) => {
     //       reject(err);
     //     });
+    setTimeout(() => {
+      setDetectLocation(true)
+    }, 1000)
   }, []);
+
   //biometrics check
   useEffect(() => {
     if (bioIsAvailable === undefined) {
@@ -45,14 +52,6 @@ const Loading = ({ navigation }) => {
       //todo open modal to enter pin code
     }
   }, [bioIsAvailable]);
-
-  // check if we should navigate to intro page
-  useEffect(() => {
-    //todo we should check language and force RTL or not
-    I18nManager.forceRTL(false);
-    I18nManager.swapLeftAndRightInRTL(false);
-    //handle change lang
-  }, []);
 
   // check if we should navigate to intro page
   useEffect(() => {
@@ -108,7 +107,32 @@ const Loading = ({ navigation }) => {
       });
   };
 
-  const selectLang = value => { };
+  useEffect(() => {
+    if (selectedLang == "fa") {
+      I18nManager.forceRTL(true);
+      I18nManager.swapLeftAndRightInRTL(true);
+    } else {
+      I18nManager.forceRTL(false);
+      I18nManager.swapLeftAndRightInRTL(false);
+    }
+  }, [selectedLang])
+
+  const selectLang = value => {
+    setSelectedLang(value)
+  };
+
+  const getLangIcon = () => {
+    switch (selectedLang) {
+      case "fa":
+        return <Image source={Images.LangFlags.fa} style={{ height: 32, width: 32, marginTop: -8 }} />
+      case "en":
+        return <Image source={Images.LangFlags.en} style={{ height: 32, width: 32, marginTop: -8 }} />
+      case "tr":
+        return <Image source={Images.LangFlags.tr} style={{ height: 32, width: 32, marginTop: -8 }} />
+      default:
+        return null
+    }
+  }
 
   return (
     <ImageBackground
@@ -116,28 +140,48 @@ const Loading = ({ navigation }) => {
       style={styles.container}
       resizeMode={'cover'}>
       <View style={styles.indicatorWrapper}>
-        <Image source={Images.Logo} style={[{width: 72, height: 72}, theme.imageTransfor]} />
-        <Picker
-          backgroundColor={'danger'}
-          style={{ width: 100, height: 50 }}
-          items={[
-            { label: 'English', value: 'en' },
-            { label: 'Persian', value: 'per' },
-          ]}
-          onChange={selectLang}
-        />
-        <ActivityIndicator
-          style={{ marginBottom: '15%' }}
-          size="large"
-        // color={STYLES.Color.success}
-        />
+
+        {
+          detectLocation ?
+            <Picker
+              style={{
+                width: width * 0.8,
+                maxWidth: 192,
+                height: height * 0.1,
+                maxHeight: 72,
+                paddingHorizontal: theme.spacing.xl,
+                color: "white",
+                // marginHorizontal: theme.spacing.xl,
+                iconContainer: {
+                },
+                input: {color: 'white'}
+              }}
+             
+              // itemStyle={{ color: "white" }}
+              items={[
+                // { label: 'English', value: 'en' },
+                { label: 'Persian', value: 'fa' },
+                { label: 'Turkey', value: 'tr' },
+              ]}
+              onChange={selectLang}
+              Icon={getLangIcon}
+              placeholder={{ label: 'English', value: 'en' }}
+            />
+            :
+            <ActivityIndicator
+              style={{ marginBottom: '15%' }}
+              size="large"
+            // color={STYLES.Color.success}
+            />
+        }
+
+
       </View>
     </ImageBackground>
   );
 };
 
 const stepSize = Platform.select({ ios: 70, android: 60 });
-const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -194,10 +238,11 @@ const styles = StyleSheet.create({
   },
   indicatorWrapper: {
     width: '100%',
-    height: '100%',
+    height: height * 0.9,
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    alignSelf: "center"
   },
   passWrapper: { width: '100%', height: '90%', alignItems: 'center' },
   //sells: {backgroundColor: STYLES.Color.thirdBg, marginLeft: 8, marginRight: 8},

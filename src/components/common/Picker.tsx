@@ -14,16 +14,17 @@ interface PickerProps extends React.ComponentProps<typeof View> {
   iconContainer: ViewStyle
   value: string,
   style: ViewStyle,
-  icon: ReactNode,
+  Icon: ReactNode,
   onChange: (myArgument: string) => void;
 }
 
-const Picker: FC<PickerProps> = ({style, margin, backgroundColor ,items, onChange, icon, iconContainer,  ...rest}) => {
+const Picker: FC<PickerProps> = ({style, placeholder, margin, backgroundColor ,items, onChange, Icon, iconContainer,  ...rest}) => {
 
   return (
     <Box backgroundColor={backgroundColor} style={style} margin={margin}>
          <RNPickerSelect 
-            Icon={icon}
+            Icon={Icon}
+            placeholder={placeholder}
             style={{viewContainer:{width: '100%', height: '100%'}, iconContainer}}
             pickerProps={{...rest}}
             onValueChange={onChange}

@@ -21,7 +21,7 @@ const Loading = ({ navigation }) => {
   const [bioIsAvailable, setBioAvailability] = useState(undefined);
   const [selectedLang, setSelectedLang] = useState("en");
   const [detectLocation, setDetectLocation] = useState(false);
-  const {theme, setDirection} = useContext(ThemeContext)
+  const { theme, setDirection } = useContext(ThemeContext)
 
   useEffect(() => {
     // orderServices
@@ -142,32 +142,30 @@ const Loading = ({ navigation }) => {
       style={styles.container}
       resizeMode={'cover'}>
       <View style={styles.indicatorWrapper}>
-
         {
           detectLocation ?
             <Picker
               style={{
-                width: width * 0.8,
-                maxWidth: 192,
+                width: width * 0.4,
                 height: height * 0.1,
                 maxHeight: 72,
+                maxWidth: 256,
                 paddingHorizontal: theme.spacing.xl,
-                color: "white",
-                // marginHorizontal: theme.spacing.xl,
-                iconContainer: {
-                },
-                input: {color: 'white'}
               }}
-             
-              // itemStyle={{ color: "white" }}
+
+              pickerStyle={{
+                inputIOS: { color: "white"},
+                inputAndroid: { color: "white"},
+              }}
+              placeholder={{ label: 'English', value: 'en' }}
               items={[
-                // { label: 'English', value: 'en' },
                 { label: 'Persian', value: 'fa' },
                 { label: 'Turkey', value: 'tr' },
               ]}
               onChange={selectLang}
               Icon={getLangIcon}
-              placeholder={{ label: 'English', value: 'en' }}
+              
+
             />
             :
             <ActivityIndicator

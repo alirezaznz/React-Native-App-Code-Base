@@ -11,21 +11,23 @@ interface PickerProps extends React.ComponentProps<typeof View> {
   backgroundColor: keyof typeof theme.colors,
   placeholder: 'string',
   disabled: boolean,
-  iconContainer: ViewStyle
   value: string,
-  style: ViewStyle,
   Icon: ReactNode,
+  style: ViewStyle,
+  ContainerStyle: ViewStyle,
+  pickerStyle: ViewStyle,
+  //inputIOSContainer, placeholder, viewContainer, chevronContainer, chevron, chevronUp, chevronDown, chevronActive, done, modalViewTop, modalViewMiddle, and modalViewBottom
   onChange: (myArgument: string) => void;
 }
 
-const Picker: FC<PickerProps> = ({style, placeholder, margin, backgroundColor ,items, onChange, Icon, iconContainer,  ...rest}) => {
+const Picker: FC<PickerProps> = ({pickerStyle, ContainerStyle, placeholder, margin, backgroundColor ,items, onChange, Icon, style,  ...rest}) => {
 
   return (
-    <Box backgroundColor={backgroundColor} style={style} margin={margin}>
+    <Box backgroundColor={backgroundColor} style={ContainerStyle} margin={margin}>
          <RNPickerSelect 
             Icon={Icon}
             placeholder={placeholder}
-            style={{viewContainer:{width: '100%', height: '100%'}, iconContainer}}
+            style={{...pickerStyle, viewContainer:style}}
             pickerProps={{...rest}}
             onValueChange={onChange}
             items={items}

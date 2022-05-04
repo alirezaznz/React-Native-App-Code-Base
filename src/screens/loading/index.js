@@ -136,6 +136,10 @@ const Loading = ({ navigation }) => {
     }
   }
 
+  const renderSelectLang = () => {
+
+  }
+
   return (
     <ImageBackground
       source={Images.SplashImage}
@@ -149,6 +153,7 @@ const Loading = ({ navigation }) => {
                 width: width * 0.4,
                 height: height * 0.1,
                 maxHeight: 72,
+                minWidth: 172,
                 maxWidth: 256,
                 paddingHorizontal: theme.spacing.xl,
               }}

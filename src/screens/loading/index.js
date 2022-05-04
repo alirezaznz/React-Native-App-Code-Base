@@ -1,5 +1,6 @@
 import ReactNativeBiometrics from 'react-native-biometrics';
 import React, { useEffect, useState, useContext } from 'react';
+import {useTranslation} from 'react-i18next';
 import {
   View,
   ActivityIndicator,
@@ -9,9 +10,10 @@ import {
   I18nManager,
   Platform,
   Image,
+  Button
 } from 'react-native';
 import { Images } from '@Constants';
-import { Picker } from "@Components"
+import { Box, Picker } from "@Components"
 import { LocalStorage } from '@Utils';
 import { ThemeContext } from '@Theme';
 const { width, height } = Dimensions.get('window');
@@ -22,7 +24,7 @@ const Loading = ({ navigation }) => {
   const [selectedLang, setSelectedLang] = useState("en");
   const [detectLocation, setDetectLocation] = useState(false);
   const { theme, setDirection } = useContext(ThemeContext)
-
+  const {t: translate, i18n: langi18n} = useTranslation()
   useEffect(() => {
     // orderServices
     //     .orderLogin(data)
@@ -108,10 +110,12 @@ const Loading = ({ navigation }) => {
   };
 
   useEffect(() => {
+    langi18n.changeLanguage(selectedLang)
     if (selectedLang == "fa") {
       I18nManager.forceRTL(true);
       I18nManager.swapLeftAndRightInRTL(true);
       setDirection("rtl")
+      
     } else {
       I18nManager.forceRTL(false);
       I18nManager.swapLeftAndRightInRTL(false);
@@ -137,7 +141,32 @@ const Loading = ({ navigation }) => {
   }
 
   const renderSelectLang = () => {
+    return (<Box>
+      <Picker
+        style={{
+          width: width * 0.4,
+          height: height * 0.1,
+          maxHeight: 72,
+          minWidth: 172,
+          maxWidth: 256,
+          paddingHorizontal: theme.spacing.xl,
+        }}
 
+        pickerStyle={{
+          inputIOS: { color: "white" },
+          inputAndroid: { color: "white" },
+        }}
+        placeholder={{ label: 'English', value: 'en' }}
+        items={[
+          { label: 'Persian', value: 'fa' },
+          { label: 'Turkey', value: 'tr' },
+        ]}
+        onChange={selectLang}
+        Icon={getLangIcon}
+      />
+      <Button onPress={()=> navigation.replace('Intor')} title={translate("lang.Enter")} />
+    </Box>
+    )
   }
 
   return (
@@ -148,30 +177,7 @@ const Loading = ({ navigation }) => {
       <View style={styles.indicatorWrapper}>
         {
           detectLocation ?
-            <Picker
-              style={{
-                width: width * 0.4,
-                height: height * 0.1,
-                maxHeight: 72,
-                minWidth: 172,
-                maxWidth: 256,
-                paddingHorizontal: theme.spacing.xl,
-              }}
-
-              pickerStyle={{
-                inputIOS: { color: "white"},
-                inputAndroid: { color: "white"},
-              }}
-              placeholder={{ label: 'English', value: 'en' }}
-              items={[
-                { label: 'Persian', value: 'fa' },
-                { label: 'Turkey', value: 'tr' },
-              ]}
-              onChange={selectLang}
-              Icon={getLangIcon}
-              
-
-            />
+            renderSelectLang()
             :
             <ActivityIndicator
               style={{ marginBottom: '15%' }}

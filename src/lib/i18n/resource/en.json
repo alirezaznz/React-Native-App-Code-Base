@@ -1,10 +1,11 @@
 {
     "Common": {
-        "next": "next",
-        "done": "done"
+        "next": "Next",
+        "done": "Done"
     },
     "lang": {
-        "Select Language": "Select Language"
+        "Select Language": "Select Language",
+        "Enter": "Enter"
     },
     "IntroPage": {
         "Intro1": {

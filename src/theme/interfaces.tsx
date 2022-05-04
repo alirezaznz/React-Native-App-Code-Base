@@ -50,11 +50,17 @@ export interface ResponsiveValue{
     colors: Color,
     spacing: Spacing,
     textVariants: TextVariants,
-    breakpoints: BreakPoints
-    imageTransfor: {}
+    breakpoints: BreakPoints,
+    imageTransfor?: {}
   }
   
   export interface ThemeModes {
-    light: Theme,
-    dark: Theme
+    light: {
+      ltr:Theme
+      rtl: Theme
+  }
+    dark:  {
+      ltr: Theme
+      rtl: Theme
+   }
   }

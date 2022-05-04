@@ -42,24 +42,39 @@ export const theme: Theme = {
       fontSize: 16,
     },
   },
-  imageTransfor: {transform: [{scaleX: I18nManager.isRTL ? -1 : 1}]}
+
 };
 
 export const themes: ThemeModes = {
   light: {
-    ...theme,
-    colors: {
-      ...theme.colors,
+    rtl: {
+      ...theme,
+      colors: {
+        ...theme.colors,
+      },
+      imageTransfor: {transform: [{scaleX: -1 }]}
+    },
+    ltr: {
+      ...theme,
+      colors: {
+        ...theme.colors,
+      },
+      imageTransfor: {transform: [{scaleX: 1 }]}
     },
   },
   dark: {
-    ...theme,
-    colors: {
-      ...theme.colors,
-      background: palette.black,
-      foreground: palette.white,
+    rtl: {
+      ...theme,
+      colors: {
+        ...theme.colors,
+      }
     },
-  },
-};
+    ltr: {
+      ...theme,
+      colors: {
+        ...theme.colors,
+      }
+  }
+}}
 
-export const ThemeContext = React.createContext(themes.light);
+export const ThemeContext = React.createContext({theme: themes.light.rtl, direction: "ltr", themeMode: "light"});

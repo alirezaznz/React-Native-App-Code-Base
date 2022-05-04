@@ -1,5 +1,5 @@
 import React, {FC, ReactNode, useContext} from 'react';
-import {View, ViewStyle} from 'react-native';
+import {TextStyle, View, ViewStyle} from 'react-native';
 import {theme, Spacing, ResponsiveValue} from '@Theme';
 import { Box } from './Box';
 import RNPickerSelect from 'react-native-picker-select';
@@ -15,8 +15,13 @@ interface PickerProps extends React.ComponentProps<typeof View> {
   Icon: ReactNode,
   style: ViewStyle,
   ContainerStyle: ViewStyle,
-  pickerStyle: ViewStyle,
-  //inputIOSContainer, placeholder, viewContainer, chevronContainer, chevron, chevronUp, chevronDown, chevronActive, done, modalViewTop, modalViewMiddle, and modalViewBottom
+  pickerStyle: {
+    inputIOSContainer?: ViewStyle
+    inputAndroid: ViewStyle
+    placeholder?: TextStyle
+    chevronContainer?: ViewStyle
+    chevron: ViewStyle
+  },
   onChange: (myArgument: string) => void;
 }
 

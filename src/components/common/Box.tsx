@@ -1,5 +1,5 @@
 import React, {FC, useContext} from 'react';
-import {View, Dimensions, ViewStyle} from 'react-native';
+import {View, ViewStyle, StyleProp} from 'react-native';
 import {theme, getSpacing, ThemeContext, Spacing, ResponsiveValue} from '@Theme';
 
 interface BoxProps extends React.ComponentProps<typeof View> {
@@ -20,7 +20,7 @@ const Box: FC<BoxProps> = ({style, padding, margin, backgroundColor ,children, .
         padding: getSpacing(padding!, theme),
         backgroundColor: theme.colors[backgroundColor],
         ...style,
-      }}
+      } as StyleProp<ViewStyle>}
       {...rest}
     >
       {children}

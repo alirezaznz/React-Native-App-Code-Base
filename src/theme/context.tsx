@@ -8,6 +8,7 @@ const palette = {
   red: '#CD0E61',
   black: '#0B0B0B',
   white: '#F0F2F3',
+  grey: '#808080'
 };
 
 export const theme: Theme = {
@@ -18,6 +19,7 @@ export const theme: Theme = {
     success: palette.green,
     danger: palette.red,
     failure: palette.red,
+    text: palette.black,
   },
   spacing: {
     default: 0,
@@ -30,6 +32,11 @@ export const theme: Theme = {
     smallPhone: 0,
     phone: 321,
     tablet: 768,
+  },
+  buttonVariants: {
+    primary: {bgColor: palette.green},
+    secondry: {bgColor: palette.white},
+    disabled: {bgColor: palette.grey}
   },
   textVariants: {
     header: {

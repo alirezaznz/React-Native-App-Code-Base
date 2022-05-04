@@ -11,7 +11,7 @@ interface BoxProps extends React.ComponentProps<typeof View> {
 }
 
 const Box: FC<BoxProps> = ({style, padding, margin, backgroundColor ,children, ...rest}) => {
-  const theme = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
 
   return (
     <View

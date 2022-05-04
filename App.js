@@ -34,7 +34,7 @@ const App = () => {
         direction: direction,
         setDirection: dir => setDirection(dir),
       }}>
-      {ENV.name != 'prod' && (
+      {ENV.name != 'Prod' && (
         <Text
           style={{
             fontSize: 12,

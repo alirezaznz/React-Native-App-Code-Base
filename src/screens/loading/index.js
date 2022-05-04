@@ -21,7 +21,7 @@ const Loading = ({ navigation }) => {
   const [bioIsAvailable, setBioAvailability] = useState(undefined);
   const [selectedLang, setSelectedLang] = useState("en");
   const [detectLocation, setDetectLocation] = useState(false);
-  const theme = useContext(ThemeContext)
+  const {theme, setDirection} = useContext(ThemeContext)
 
   useEffect(() => {
     // orderServices
@@ -111,9 +111,11 @@ const Loading = ({ navigation }) => {
     if (selectedLang == "fa") {
       I18nManager.forceRTL(true);
       I18nManager.swapLeftAndRightInRTL(true);
+      setDirection("rtl")
     } else {
       I18nManager.forceRTL(false);
       I18nManager.swapLeftAndRightInRTL(false);
+      setDirection("ltr")
     }
   }, [selectedLang])
 

@@ -1,40 +1,66 @@
 module.exports = {
-  // 'import/parsers': {
-  //   '@babel/eslint-parser': {},
-  // },
-  env: {
-    jest: true,
-    "react-native/react-native": true
-  },
-  parser: '@babel/eslint-parser',
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    ecmaFeatures: { jsx: true },
-    babelOptions: {
-      configFile: './babel.config.js',
+    // 'import/parsers': {
+    //   '@babel/eslint-parser': {},
+    // },
+    env: {
+        'jest/globals': true,
+        es6: true,
+        node: true,
+        jest: true,
+        'react-native/react-native': true,
     },
-  },
-
-  root: true,
-  rules: {
-    curly: 'off',
-    "react-native/no-unused-styles": 2,
-    "react-native/split-platform-components": 2,
-    "react-native/no-inline-styles": 2,
-    "react-native/no-color-literals": 2,
-    "react-native/no-raw-text": 2,
-    "react-native/no-single-element-style-arrays": 2,
-  },
-  settings: {
-    'import/resolver': {
-      'babel-module': {
-        root: ['.'],
-      },
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+        project: './tsconfig.json',
+        ecmaVersion: 6,
+        sourceType: 'module',
+        ecmaFeatures: {jsx: true},
+        babelOptions: {
+            configFile: './babel.config.js',
+        },
     },
-    'react-native/style-sheet-object-names': ['EStyleSheet', 'OtherStyleSheet', 'PStyleSheet']
-  },
-  plugins: ['babel', 'import', 'react', "react-native", '@react-native-community', 'airbnb-typescript', 'prettier', 'prettier/@typescript-eslint', 'prettier/react'],
-
-  extends: ["plugin:react-hooks/recommended", "plugin:react-native/all"],
+    root: true,
+    plugins: [
+        'babel',
+        'import',
+        'react-native',
+        '@react-native-community',
+        '@typescript-eslint',
+        'jest',
+    ],
+    rules: {
+        curly: 'off',
+        '@typescript-eslint/semi': 'error',
+        'react-native/no-unused-styles': 2,
+        'react-native/split-platform-components': 2,
+        'react-native/no-inline-styles': 2,
+        'react-native/no-color-literals': 2,
+        'react-native/no-raw-text': 2,
+        'react-native/no-single-element-style-arrays': 2,
+        'jest/no-disabled-tests': 'warn',
+        'jest/no-focused-tests': 'error',
+        'jest/no-identical-title': 'error',
+        'jest/prefer-to-have-length': 'warn',
+        'jest/valid-expect': 'error',
+    },
+    settings: {
+        'import/resolver': {
+            'babel-module': {
+                root: ['.'],
+            },
+        },
+        'react-native/style-sheet-object-names': [
+            'EStyleSheet',
+            'OtherStyleSheet',
+            'PStyleSheet',
+        ],
+    },
+    extends: [
+        'plugin:jest/recommended',
+        'plugin:prettier/recommended',
+        'plugin:react/recommended',
+        'airbnb-typescript',
+        'plugin:react-hooks/recommended',
+        '@react-native-community',
+    ],
 };

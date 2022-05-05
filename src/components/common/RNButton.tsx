@@ -1,44 +1,55 @@
-import { ThemeContext } from '@Theme';
-import React, { FC, useContext } from 'react';
-import { StyleProp, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
-import { RNText } from './RNText';
+import {ThemeContext} from '@Theme';
+import React, {FC, useContext} from 'react';
+import {StyleProp, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
+import {RNText} from './RNText';
 
-export enum Type{
+export enum Type {
     Primary,
     Secondry,
-    Disabled
+    Disabled,
 }
 // const typeBg = {
 //     [Type.Primary]: theme.buttonVariants.primary.bgColor
 // }
 interface ButtonProps extends React.ComponentProps<typeof TouchableOpacity> {
-    title: string
-    type: Type
-    textStyle: TextStyle
-  }
+    title: string;
+    type: Type;
+    textStyle: TextStyle;
+}
 
-const RNButton: FC<ButtonProps> = ({title, type, style, textStyle, onPress}) => {
-    const {theme} = useContext(ThemeContext)
+const RNButton: FC<ButtonProps> = ({
+    title,
+    type,
+    style,
+    textStyle,
+    onPress,
+}) => {
+    const {theme} = useContext(ThemeContext);
 
-    function typeColor(): ViewStyle{
-        switch(type){
+    function typeColor(): ViewStyle {
+        switch (type) {
             case Type.Primary:
-                return {backgroundColor: theme.buttonVariants.primary.bgColor}
+                return {backgroundColor: theme.buttonVariants.primary.bgColor};
             case Type.Secondry:
-                return {backgroundColor: theme.buttonVariants.secondry.bgColor}
+                return {backgroundColor: theme.buttonVariants.secondry.bgColor};
             case Type.Disabled:
-                return {backgroundColor: theme.buttonVariants.disabled.bgColor}
-            default: 
-                return {backgroundColor: theme.buttonVariants.disabled.bgColor}
-
+                return {backgroundColor: theme.buttonVariants.disabled.bgColor};
+            default:
+                return {backgroundColor: theme.buttonVariants.disabled.bgColor};
         }
     }
 
     return (
-        <TouchableOpacity style={[typeColor as StyleProp<ViewStyle>,{justifyContent: 'center', alignItems: 'center'}, style]} onPress={onPress}>
+        <TouchableOpacity
+            style={[
+                typeColor as StyleProp<ViewStyle>,
+                {justifyContent: 'center', alignItems: 'center'},
+                style,
+            ]}
+            onPress={onPress}>
             <RNText style={textStyle}>{title}</RNText>
-            </TouchableOpacity>
-    )
-}
+        </TouchableOpacity>
+    );
+};
 
-export {RNButton}
+export {RNButton};

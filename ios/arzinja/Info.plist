@@ -24,6 +24,8 @@
 	<string>1</string>
 	<key>CodePushDeploymentKey</key>
 	<string>8k3K8IQEHCM1LeF3n8Cp2F8Zf04Xg8E9XxQ6M</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Text explains why you need the FaceID</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

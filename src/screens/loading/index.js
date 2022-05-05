@@ -21,6 +21,7 @@ const { width, height } = Dimensions.get('window');
 // check locale
 const Loading = ({ navigation }) => {
   const [bioIsAvailable, setBioAvailability] = useState(undefined);
+  const [bioAuthenticated, setBioAuthenticated] = useState(false);
   const [selectedLang, setSelectedLang] = useState('en');
   const [detectLocation, setDetectLocation] = useState(false);
   const { theme, setDirection } = useContext(ThemeContext);
@@ -71,41 +72,23 @@ const Loading = ({ navigation }) => {
 
   const createBioKeyIfNotExists = () => {
     return new Promise((resolve) => {
-      ReactNativeBiometrics.deleteKeys()
-        .then((resultObject) => {
-          const { keysDeleted } = resultObject
 
-          if (keysDeleted) {
-            console.log('Successful deletion')
+      ReactNativeBiometrics.biometricKeysExist()
+        .then((resultObject) => {
+          const { keysExist } = resultObject
+          if (keysExist) {
+            console.log('Keys exist')
+            resolve()
           } else {
-            console.log('Unsuccessful deletion because there were no keys to delete')
+            ReactNativeBiometrics.createKeys('Confirm fingerprint')
+              .then((resultObject) => {
+                const { publicKey } = resultObject
+                LocalStorage.save("BioPublicKey", publicKey)
+                console.log(publicKey)
+                resolve()
+              })
           }
         })
-      // ReactNativeBiometrics.createKeys('Confirm fingerprint')
-      //   .then((resultObject) => {
-      //     const { publicKey } = resultObject
-      //     console.log(publicKey)
-      //     resolve()
-      //   })
-
-      // ReactNativeBiometrics.biometricKeysExist()
-      //   .then((resultObject) => {
-      //     const { keysExist } = resultObject
-      //     debugger
-      //     if (keysExist) {
-      //       console.log('Keys exist')
-      //       resolve()
-      //     } else {
-      //       ReactNativeBiometrics.createKeys('Confirm fingerprint')
-      //         .then((resultObject) => {
-      //           const { publicKey } = resultObject
-
-      //           debugger
-      //           console.log(publicKey)
-      //           resolve()
-      //         })
-      //     }
-      //   })
 
     })
   }
@@ -133,24 +116,31 @@ const Loading = ({ navigation }) => {
   };
 
   const getBioKey = () => {
-    let epochTimeSeconds = Math.round(new Date().getTime() / 1000).toString();
-    let payload = epochTimeSeconds + 'some message';
 
-    ReactNativeBiometrics.createSignature({
-      promptMessage: 'Sign in',
-      payload: payload,
+    ReactNativeBiometrics.simplePrompt({
+      promptMessage: 'Confirm fingerprint',
     })
-      .then(resultObject => {
-        const { success, signature } = resultObject;
-        console.log('create sig result: ', success, signature);
-        if (success) {
-          console.log(signature);
-        }
+      .then(() => {
+        setBioAuthenticated(true)
       })
-      .catch(e => {
-        debugger
-        console.log('failed to create sig: ', e);
-      });
+      .catch(() => {
+        console.log('fingerprint failed or prompt was cancelled')
+      })
+    // ReactNativeBiometrics.createSignature({
+    //   promptMessage: 'Sign in',
+    //   payload: payload,
+    // })
+    //   .then(resultObject => {
+    //     const { success, signature } = resultObject;
+    //     console.log('create sig result: ', success, signature);
+    //     if (success) {
+    //       console.log(signature);
+    //     }
+    //   })
+    //   .catch(e => {
+    //     debugger
+    //     console.log('failed to create sig: ', e);
+    //   });
   };
 
   useEffect(() => {
@@ -229,7 +219,7 @@ const Loading = ({ navigation }) => {
       style={styles.container}
       resizeMode={'cover'}>
       <View style={styles.indicatorWrapper}>
-        {detectLocation ? (
+        {detectLocation && bioAuthenticated ? (
           renderSelectLang()
         ) : (
           <ActivityIndicator

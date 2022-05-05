@@ -1,6 +1,6 @@
 import ReactNativeBiometrics from 'react-native-biometrics';
-import React, {useEffect, useState, useContext} from 'react';
-import {useTranslation} from 'react-i18next';
+import React, { useEffect, useState, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   View,
   ActivityIndicator,
@@ -12,19 +12,19 @@ import {
   Image,
   Button,
 } from 'react-native';
-import {Images} from '@Constants';
-import {Box, Picker, RNButton} from '@Components';
-import {LocalStorage} from '@Utils';
-import {ThemeContext} from '@Theme';
-const {width, height} = Dimensions.get('window');
+import { Images } from '@Constants';
+import { Box, Picker, RNButton } from '@Components';
+import { LocalStorage } from '@Utils';
+import { ThemeContext } from '@Theme';
+const { width, height } = Dimensions.get('window');
 
 // check locale
-const Loading = ({navigation}) => {
+const Loading = ({ navigation }) => {
   const [bioIsAvailable, setBioAvailability] = useState(undefined);
   const [selectedLang, setSelectedLang] = useState('en');
   const [detectLocation, setDetectLocation] = useState(false);
-  const {theme, setDirection} = useContext(ThemeContext);
-  const {t: translate, i18n: langi18n} = useTranslation();
+  const { theme, setDirection } = useContext(ThemeContext);
+  const { t: translate, i18n: langi18n } = useTranslation();
   useEffect(() => {
     // orderServices
     //     .orderLogin(data)
@@ -68,7 +68,7 @@ const Loading = ({navigation}) => {
 
   const biometricsCheck = async () => {
     ReactNativeBiometrics.isSensorAvailable().then(resultObject => {
-      const {available, biometryType} = resultObject;
+      const { available, biometryType } = resultObject;
 
       if (available && biometryType === ReactNativeBiometrics.TouchID) {
         console.log('bio available: ', true);
@@ -98,7 +98,7 @@ const Loading = ({navigation}) => {
       payload: payload,
     })
       .then(resultObject => {
-        const {success, signature} = resultObject;
+        const { success, signature } = resultObject;
         console.log('create sig result: ', success, signature);
         if (success) {
           console.log(signature);
@@ -132,21 +132,21 @@ const Loading = ({navigation}) => {
         return (
           <Image
             source={Images.LangFlags.fa}
-            style={{height: 32, width: 32, marginTop: -8}}
+            style={styles.flagIcon}
           />
         );
       case 'en':
         return (
           <Image
             source={Images.LangFlags.en}
-            style={{height: 32, width: 32, marginTop: -8}}
+            style={styles.flagIcon}
           />
         );
       case 'tr':
         return (
           <Image
             source={Images.LangFlags.tr}
-            style={{height: 32, width: 32, marginTop: -8}}
+            style={styles.flagIcon}
           />
         );
       default:
@@ -158,22 +158,15 @@ const Loading = ({navigation}) => {
     return (
       <Box>
         <Picker
-          style={{
-            width: width * 0.4,
-            height: height * 0.1,
-            maxHeight: 72,
-            minWidth: 172,
-            maxWidth: 256,
-            paddingHorizontal: theme.spacing.xl,
-          }}
+          style={styles.pickerStyle(theme)}
           pickerStyle={{
-            inputIOS: {color: 'white'},
-            inputAndroid: {color: 'white'},
+            inputIOS: { color: 'white' },
+            inputAndroid: { color: 'white' },
           }}
-          placeholder={{label: 'English', value: 'en'}}
+          placeholder={{ label: 'English', value: 'en' }}
           items={[
-            {label: 'Persian', value: 'fa'},
-            {label: 'Turkey', value: 'tr'},
+            { label: 'Persian', value: 'fa' },
+            { label: 'Turkey', value: 'tr' },
           ]}
           onChange={selectLang}
           Icon={getLangIcon}
@@ -196,9 +189,8 @@ const Loading = ({navigation}) => {
           renderSelectLang()
         ) : (
           <ActivityIndicator
-            style={{marginBottom: '15%'}}
             size="large"
-            // color={STYLES.Color.success}
+          // color={STYLES.Color.success}
           />
         )}
       </View>
@@ -206,33 +198,18 @@ const Loading = ({navigation}) => {
   );
 };
 
-const stepSize = Platform.select({ios: 70, android: 60});
+const stepSize = Platform.select({ ios: 70, android: 60 });
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    transform: [{scaleX: 1.1}],
+    transform: [{ scaleX: 1.1 }],
   },
+  flagIcon: { height: 32, width: 32, marginTop: -8 },
   splash: {
     width: '100%',
     height: '100%',
     resizeMode: 'cover',
-  },
-  wrapper: {
-    minHeight: 40,
-  },
-  header: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  bottom: {
-    bottom: -20,
-    position: 'relative',
-  },
-  bottomContainer: {
-    paddingVertical: stepSize / 2,
-    overflow: 'visible',
   },
   logo: {
     height: height / 3,
@@ -240,27 +217,14 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginBottom: 15,
   },
-  stepHeader: {
-    position: 'absolute',
-    zIndex: 3,
-    top: 0,
-    left: width / 2,
-    marginLeft: -stepSize / 2,
-    marginTop: -stepSize / 2,
-  },
-  stepHeaderCircle: {
-    borderWidth: 5,
-    borderRadius: stepSize / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  stepHeaderIcon: {
-    position: 'absolute',
-    zIndex: 2,
-  },
-  tab: {
-    flex: 1,
-  },
+  pickerStyle: (theme) => ({
+    width: width * 0.4,
+    height: height * 0.1,
+    maxHeight: 72,
+    minWidth: 172,
+    maxWidth: 256,
+    paddingHorizontal: theme.spacing.xl,
+  }),
   indicatorWrapper: {
     width: '100%',
     height: height * 0.9,
@@ -269,10 +233,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  passWrapper: {width: '100%', height: '90%', alignItems: 'center'},
-  //sells: {backgroundColor: STYLES.Color.thirdBg, marginLeft: 8, marginRight: 8},
-  passText: {marginTop: '3%', fontSize: 15},
-  pinText: {marginTop: '10%'},
 });
 
 export default Loading;

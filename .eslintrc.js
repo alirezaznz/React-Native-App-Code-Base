@@ -1,15 +1,16 @@
 module.exports = {
-  'import/parsers': {
-    '@babel/eslint-parser': {},
-  },
+  // 'import/parsers': {
+  //   '@babel/eslint-parser': {},
+  // },
   env: {
-    jest: true
+    jest: true,
+    "react-native/react-native": true
   },
   parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
-    ecmaFeatures: {jsx: true},
+    ecmaFeatures: { jsx: true },
     babelOptions: {
       configFile: './babel.config.js',
     },
@@ -18,6 +19,12 @@ module.exports = {
   root: true,
   rules: {
     curly: 'off',
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/no-raw-text": 2,
+    "react-native/no-single-element-style-arrays": 2,
   },
   settings: {
     'import/resolver': {
@@ -25,8 +32,9 @@ module.exports = {
         root: ['.'],
       },
     },
+    'react-native/style-sheet-object-names': ['EStyleSheet', 'OtherStyleSheet', 'PStyleSheet']
   },
-  plugins: ['babel', 'import', 'react'],
+  plugins: ['babel', 'import', 'react', "react-native"],
 
-  extends: '@react-native-community',
+  extends: ["plugin:react-hooks/recommended", "plugin:react-native/all"],
 };

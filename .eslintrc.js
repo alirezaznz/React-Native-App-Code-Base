@@ -34,7 +34,7 @@ module.exports = {
     },
     'react-native/style-sheet-object-names': ['EStyleSheet', 'OtherStyleSheet', 'PStyleSheet']
   },
-  plugins: ['babel', 'import', 'react', "react-native"],
+  plugins: ['babel', 'import', 'react', "react-native", '@react-native-community', 'airbnb-typescript', 'prettier', 'prettier/@typescript-eslint', 'prettier/react'],
 
   extends: ["plugin:react-hooks/recommended", "plugin:react-native/all"],
 };

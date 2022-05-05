@@ -5,32 +5,47 @@
     "baseUrl": ".",
     "target": "esnext",
     "paths": {
-      "@Constants": ["src/constants"],
-      "@Utils": ["src/utils"],
-      "@Services": ["src/services"],
-      "@Actions": ["src/redux/sliceReducers"],
-      "@Components": ["src/components"],
-      "@Theme": ["src/theme"],
-
+      "@Constants": [
+        "src/constants"
+      ],
+      "@Utils": [
+        "src/utils"
+      ],
+      "@Services": [
+        "src/services"
+      ],
+      "@Actions": [
+        "src/redux/sliceReducers"
+      ],
+      "@Components": [
+        "src/components"
+      ],
+      "@Theme": [
+        "src/theme"
+      ],
     },
-      // "checkJs": false,
+    // "checkJs": false,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react-native",
-    "lib": ["es2017"],
+    "lib": [
+      "es2017"
+    ],
     "noEmit": true,
     "strict": true,
-      },
-    // "include": [
-    //     "*",
-    //     // "App.jsx"
-    //   ],
-      "exclude": [
-        "node_modules",
-        "babel.config.js",
-        "metro.config.js",
-        "jest.config.js"
-      ]
+  },
+  // "include": [
+  //     "*",
+  //     // "App.jsx"
+  //   ],
+  "exclude": [
+    "__tests__/**/*-test.ts",
+    "node_modules/*",
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }

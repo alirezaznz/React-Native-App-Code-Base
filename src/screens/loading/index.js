@@ -25,6 +25,7 @@ const Loading = ({ navigation }) => {
   const [detectLocation, setDetectLocation] = useState(false);
   const { theme, setDirection } = useContext(ThemeContext);
   const { t: translate, i18n: langi18n } = useTranslation();
+
   useEffect(() => {
     // orderServices
     //     .orderLogin(data)
@@ -39,9 +40,11 @@ const Loading = ({ navigation }) => {
     //     .catch((err) => {
     //       reject(err);
     //     });
+
+    //todo get user location from server
     setTimeout(() => {
       setDetectLocation(true);
-    }, 1000);
+    }, 2000);
   }, []);
 
   //biometrics check
@@ -49,7 +52,7 @@ const Loading = ({ navigation }) => {
     if (bioIsAvailable === undefined) {
       biometricsCheck();
     } else if (bioIsAvailable === true) {
-      getBioKey();
+      createBioKeyIfNotExists().then(getBioKey)
     } else {
       //todo open modal to enter pin code
     }
@@ -66,6 +69,46 @@ const Loading = ({ navigation }) => {
     })();
   }, []);
 
+  const createBioKeyIfNotExists = () => {
+    return new Promise((resolve) => {
+      ReactNativeBiometrics.deleteKeys()
+        .then((resultObject) => {
+          const { keysDeleted } = resultObject
+
+          if (keysDeleted) {
+            console.log('Successful deletion')
+          } else {
+            console.log('Unsuccessful deletion because there were no keys to delete')
+          }
+        })
+      // ReactNativeBiometrics.createKeys('Confirm fingerprint')
+      //   .then((resultObject) => {
+      //     const { publicKey } = resultObject
+      //     console.log(publicKey)
+      //     resolve()
+      //   })
+
+      // ReactNativeBiometrics.biometricKeysExist()
+      //   .then((resultObject) => {
+      //     const { keysExist } = resultObject
+      //     debugger
+      //     if (keysExist) {
+      //       console.log('Keys exist')
+      //       resolve()
+      //     } else {
+      //       ReactNativeBiometrics.createKeys('Confirm fingerprint')
+      //         .then((resultObject) => {
+      //           const { publicKey } = resultObject
+
+      //           debugger
+      //           console.log(publicKey)
+      //           resolve()
+      //         })
+      //     }
+      //   })
+
+    })
+  }
   const biometricsCheck = async () => {
     ReactNativeBiometrics.isSensorAvailable().then(resultObject => {
       const { available, biometryType } = resultObject;
@@ -105,6 +148,7 @@ const Loading = ({ navigation }) => {
         }
       })
       .catch(e => {
+        debugger
         console.log('failed to create sig: ', e);
       });
   };

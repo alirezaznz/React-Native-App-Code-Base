@@ -73,3 +73,19 @@ CacheAPI.interceptors.response.use(
 );
 
 export { API, CacheAPI };
+
+//just sample code of set token in axios interceptor 
+        // orderServices
+        //     .orderLogin(data)
+        //     .then((res) => {
+        //       let order_access_token = `Bearer ${res.data.token}`;
+        //       orderAPI.defaults.headers["Authorization"] = order_access_token;
+        //       orderAPI.defaults.headers.Authorization = order_access_token;
+        //       res.data = makeIt(JSON.stringify(res.data));
+        //       localStorage.setItem(CONST.token, res.data);
+        //       resolve();
+        //     })
+        //     .catch((err) => {
+        //       reject(err);
+        //     });
+

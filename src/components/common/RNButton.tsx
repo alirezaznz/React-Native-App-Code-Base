@@ -8,7 +8,9 @@ export enum Type{
     Secondry,
     Disabled
 }
-
+// const typeBg = {
+//     [Type.Primary]: theme.buttonVariants.primary.bgColor
+// }
 interface ButtonProps extends React.ComponentProps<typeof TouchableOpacity> {
     title: string
     type: Type

@@ -21,8 +21,8 @@ const { width, height } = Dimensions.get('window');
 
 // check locale
 const Loading = ({ navigation }) => {
-  const [selectedLang, setSelectedLang] = useState('en');
-  const [bioAuthenticated, setBioAuthenticated] = useState(false);
+  const [selectedLang, setSelectedLang] = useState(null);
+  const [bioAuthenticated, setBioAuthenticated] = useState(true);
   const [detectLocation, setDetectLocation] = useState(false);
   const { theme, setDirection, direction: appDirection } = useContext(ThemeContext);
   const { t: translate, i18n: langi18n } = useTranslation();
@@ -53,23 +53,16 @@ const Loading = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
+    if (!selectedLang) {
+      return
+    }
     langi18n.changeLanguage(selectedLang);
     LocalStorage.save(LocalStorageKeys.selectedLang, selectedLang);
+    console.log(selectedLang + " " + I18nManager.isRTL)
 
     if (appDirection != "rtl" && selectedLang == 'fa') {
-      debugger
-      if (!I18nManager.isRTL) {
-        I18nManager.forceRTL(true);
-        I18nManager.swapLeftAndRightInRTL(true);
-        RNRestart.Restart()
-      }
       setDirection('rtl');
     } else if (appDirection != "ltr" && ["en", "tr"].includes(selectedLang)) {
-      if (I18nManager.isRTL) {
-        I18nManager.forceRTL(false);
-        I18nManager.swapLeftAndRightInRTL(false);
-        RNRestart.Restart()
-      }
       setDirection('ltr');
     }
   }, [selectedLang]);
@@ -83,24 +76,32 @@ const Loading = ({ navigation }) => {
             inputIOS: { color: 'white' },
             inputAndroid: { color: 'white' },
           }}
-          placeholder={{ label: 'English', value: 'en' }}
+          placeholder={{ label: translate("lang.Select_Language"), value: null }}
           items={[
+            { label: 'English', value: 'en' },
             { label: 'Persian', value: 'fa' },
             { label: 'Turkey', value: 'tr' },
           ]}
-          onChange={setSelectedLang}
-
-          Icon={() => <Image
+          value={selectedLang}
+          onDone={setSelectedLang}
+          onClose={setSelectedLang}
+          Icon={() => selectedLang == null ? null : <Image
             source={Images.LangFlags[selectedLang]}
             style={styles.flagIcon}
           />}
         />
         <RNButton
           onPress={() => {
-            if (appDirection == "rtl") {
-              RNRestart.Restart();
-            }
             navigation.replace('Intor')
+            if (appDirection == "rtl" && !I18nManager.isRTL) {
+              I18nManager.forceRTL(true);
+              I18nManager.swapLeftAndRightInRTL(true);
+              RNRestart.Restart()
+            } else if (appDirection == "ltr" && I18nManager.isRTL) {
+              I18nManager.forceRTL(false);
+              I18nManager.swapLeftAndRightInRTL(false);
+              RNRestart.Restart()
+            }
           }}
           title={translate('lang.Enter')}
         />
@@ -115,9 +116,9 @@ const Loading = ({ navigation }) => {
       resizeMode={'cover'}>
 
       <View style={styles.indicatorWrapper}>
-      <Biometics changeAuthStatus={setBioAuthenticated} />
+        {/* <Biometics changeAuthStatus={setBioAuthenticated} /> */}
         {detectLocation && bioAuthenticated ? (
-            renderSelectLang()
+          renderSelectLang()
         ) : (
           <ActivityIndicator
             size="large"

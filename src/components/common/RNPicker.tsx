@@ -1,4 +1,4 @@
-import React, {FC, ReactNode, useContext} from 'react';
+import React, {FC, ReactNode, useState} from 'react';
 import {TextStyle, View, ViewStyle} from 'react-native';
 import {theme, Spacing, ResponsiveValue} from '@Theme';
 import { Box } from './Box';
@@ -22,11 +22,25 @@ interface PickerProps extends React.ComponentProps<typeof View> {
     chevronContainer?: ViewStyle
     chevron: ViewStyle
   },
-  onChange: (myArgument: string) => void;
+  onChange?: (myArgument: string) => void;
+  onDone?: (myArgument: string | null) => void;
+  onClose?: (myArgument: string | null) => void;
 }
 
-const Picker: FC<PickerProps> = ({pickerStyle, ContainerStyle, placeholder, margin, backgroundColor ,items, onChange, Icon, style,  ...rest}) => {
+const Picker: FC<PickerProps> = (
+  {
+    pickerStyle, 
+    ContainerStyle, 
+    placeholder, 
+    margin, 
+    backgroundColor,
+    items, 
+    value,
+    onChange, 
+    onDone, 
+    onClose, Icon, style,  ...rest}) => {
 
+  const [changeLang, setChangeLang] = useState(null);
   return (
     <Box backgroundColor={backgroundColor} style={ContainerStyle} margin={margin}>
          <RNPickerSelect 
@@ -34,7 +48,13 @@ const Picker: FC<PickerProps> = ({pickerStyle, ContainerStyle, placeholder, marg
             placeholder={placeholder}
             style={{...pickerStyle, viewContainer:style}}
             pickerProps={{...rest}}
-            onValueChange={onChange}
+            value={value}
+            onValueChange={(value)=>{
+              setChangeLang(value);
+              onChange && onChange(value)
+            }}
+            onDonePress={()=> onDone && onDone(changeLang)}
+            onClose={()=> onClose && onClose(changeLang)}
             items={items}
             />
         </Box>
@@ -44,5 +64,8 @@ const Picker: FC<PickerProps> = ({pickerStyle, ContainerStyle, placeholder, marg
 Picker.defaultProps = {
   margin: 'default' as keyof Spacing,
   padding: 'default' as keyof Spacing,
+  onChange: ()=>{},
+  onDone: ()=>{},
+  onClose: ()=>{},
 }
 export {Picker}

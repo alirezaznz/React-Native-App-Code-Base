@@ -36,7 +36,11 @@ const Loading = ({ navigation }) => {
 
     (async () => {
       const lang = await LocalStorage.getItem(LocalStorageKeys.selectedLang)
-      setSelectedLang(lang)
+      if (lang) {
+        langi18n.changeLanguage(lang);
+        LocalStorage.remove(LocalStorageKeys.selectedLang)
+        navigation.replace('Intor')
+      }
     })()
   }, []);
 
@@ -58,7 +62,6 @@ const Loading = ({ navigation }) => {
     }
     langi18n.changeLanguage(selectedLang);
     LocalStorage.save(LocalStorageKeys.selectedLang, selectedLang);
-    console.log(selectedLang + " " + I18nManager.isRTL)
 
     if (appDirection != "rtl" && selectedLang == 'fa') {
       setDirection('rtl');
@@ -82,7 +85,7 @@ const Loading = ({ navigation }) => {
             { label: 'Persian', value: 'fa' },
             { label: 'Turkey', value: 'tr' },
           ]}
-          value={selectedLang}
+
           onDone={setSelectedLang}
           onClose={setSelectedLang}
           Icon={() => selectedLang == null ? null : <Image

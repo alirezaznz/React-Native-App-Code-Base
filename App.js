@@ -31,7 +31,7 @@ const App = () => {
       value={{
         theme: themes[themeMode][direction],
         setThemeMode: theme => setThemeMode(theme),
-        direction: direction,
+        direction,
         setDirection: dir => setDirection(dir),
       }}>
       {ENV.name != 'Prod' && (

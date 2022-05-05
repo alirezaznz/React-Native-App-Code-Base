@@ -1,23 +1,23 @@
-import axios from "axios";
-import { ENV } from '@Constants';
-import { HandleAPIErrorPayload } from "./errorHandler";
+import axios from 'axios';
+import {ENV} from '@Constants';
+import {HandleAPIErrorPayload} from './errorHandler';
 
 const API = axios.create({
     baseURL: ENV.baseURL,
     headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
     },
 });
 
 API.interceptors.request.use(
-    (config) => {
+    config => {
         ////ebugger
         return config;
     },
     function (err) {
         // handle error
         return Promise.reject(err);
-    }
+    },
 );
 
 API.interceptors.response.use(
@@ -31,31 +31,31 @@ API.interceptors.response.use(
         // Do something with response error
         HandleAPIErrorPayload(error);
         return Promise.reject(error);
-    }
+    },
 );
 
 // Create `axios-cache-adapter` instance
 const cache = setupCache({
-    maxAge: 15 * 60 * 1000
-})
+    maxAge: 15 * 60 * 1000,
+});
 
 const CacheAPI = axios.create({
     baseURL: ENV.baseURL,
     headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
     },
-    adapter: cache.adapter
+    adapter: cache.adapter,
 });
 
 CacheAPI.interceptors.request.use(
-    (config) => {
+    config => {
         ////ebugger
         return config;
     },
     function (err) {
         // handle error
         return Promise.reject(err);
-    }
+    },
 );
 
 CacheAPI.interceptors.response.use(
@@ -69,23 +69,22 @@ CacheAPI.interceptors.response.use(
         // Do something with response error
         HandleAPIErrorPayload(error);
         return Promise.reject(error);
-    }
+    },
 );
 
-export { API, CacheAPI };
+export {API, CacheAPI};
 
-//just sample code of set token in axios interceptor 
-        // orderServices
-        //     .orderLogin(data)
-        //     .then((res) => {
-        //       let order_access_token = `Bearer ${res.data.token}`;
-        //       orderAPI.defaults.headers["Authorization"] = order_access_token;
-        //       orderAPI.defaults.headers.Authorization = order_access_token;
-        //       res.data = makeIt(JSON.stringify(res.data));
-        //       localStorage.setItem(CONST.token, res.data);
-        //       resolve();
-        //     })
-        //     .catch((err) => {
-        //       reject(err);
-        //     });
-
+//just sample code of set token in axios interceptor
+// orderServices
+//     .orderLogin(data)
+//     .then((res) => {
+//       let order_access_token = `Bearer ${res.data.token}`;
+//       orderAPI.defaults.headers["Authorization"] = order_access_token;
+//       orderAPI.defaults.headers.Authorization = order_access_token;
+//       res.data = makeIt(JSON.stringify(res.data));
+//       localStorage.setItem(CONST.token, res.data);
+//       resolve();
+//     })
+//     .catch((err) => {
+//       reject(err);
+//     });

@@ -1,12 +1,9 @@
 import ReactNativeBiometrics from 'react-native-biometrics';
-import React, { useEffect, useState } from 'react';
-import {
-    ActivityIndicator,
-    Modal
-} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, Modal} from 'react-native';
 
 // check locale
-export const Biometics = ({ navigation, changeAuthStatus=()=>{} }) => {
+export const Biometics = ({navigation, changeAuthStatus = () => {}}) => {
     const [bioIsAvailable, setBioAvailability] = useState(undefined);
     const [bioAuthenticated, setBioAuthenticated] = useState(true);
 
@@ -15,41 +12,40 @@ export const Biometics = ({ navigation, changeAuthStatus=()=>{} }) => {
         if (bioIsAvailable === undefined) {
             biometricsCheck();
         } else if (bioIsAvailable === true) {
-            createBioKeyIfNotExists().then(getBioKey)
+            createBioKeyIfNotExists().then(getBioKey);
         } else {
             //todo open modal to enter pin code
         }
     }, [bioIsAvailable]);
 
     const createBioKeyIfNotExists = () => {
-        return new Promise((resolve) => {
-            ReactNativeBiometrics.biometricKeysExist()
-                .then((resultObject) => {
-                    const { keysExist } = resultObject
-                    if (keysExist) {
-                        resolve()
-                    } else {
-                        ReactNativeBiometrics.createKeys('Confirm fingerprint')
-                        .then((resultObject) => {
-                            const { publicKey } = resultObject
-                            LocalStorage.save("BioPublicKey", publicKey)
-                            resolve()
-                        })
-                    }
-                })
-        })
-    }
+        return new Promise(resolve => {
+            ReactNativeBiometrics.biometricKeysExist().then(resultObject => {
+                const {keysExist} = resultObject;
+                if (keysExist) {
+                    resolve();
+                } else {
+                    ReactNativeBiometrics.createKeys(
+                        'Confirm fingerprint',
+                    ).then(resultObject => {
+                        const {publicKey} = resultObject;
+                        LocalStorage.save('BioPublicKey', publicKey);
+                        resolve();
+                    });
+                }
+            });
+        });
+    };
 
     const biometricsCheck = async () => {
         ReactNativeBiometrics.isSensorAvailable().then(resultObject => {
-            const { available, biometryType } = resultObject;
+            const {available, biometryType} = resultObject;
             if (!available) {
-                bioAuthenticated(true)
+                bioAuthenticated(true);
                 setBioAvailability(false);
-                changeAuthStatus(true)
+                changeAuthStatus(true);
                 console.log('bio available: ', false);
-            }
-            else if (biometryType === ReactNativeBiometrics.TouchID) {
+            } else if (biometryType === ReactNativeBiometrics.TouchID) {
                 console.log('bio available: ', true);
                 setBioAvailability(true);
             } else if (biometryType === ReactNativeBiometrics.FaceID) {
@@ -63,38 +59,32 @@ export const Biometics = ({ navigation, changeAuthStatus=()=>{} }) => {
     };
 
     const getBioKey = () => {
-
         ReactNativeBiometrics.simplePrompt({
             promptMessage: 'Confirm fingerprint',
         })
             .then(() => {
-                setBioAuthenticated(true)
-                changeAuthStatus(true)
+                setBioAuthenticated(true);
+                changeAuthStatus(true);
             })
             .catch(() => {
-                changeAuthStatus(false)
-                console.log('fingerprint failed or prompt was cancelled')
-            })
+                changeAuthStatus(false);
+                console.log('fingerprint failed or prompt was cancelled');
+            });
     };
 
     if (bioIsAvailable === false) {
-        return null
+        return null;
     }
     if (bioAuthenticated === true) {
-        return null
+        return null;
     }
 
     return (
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={true}
-        >
+        <Modal animationType="slide" transparent={true} visible={true}>
             <ActivityIndicator
                 size="large"
-            // color={STYLES.Color.success}
+                // color={STYLES.Color.success}
             />
-
         </Modal>
     );
-}
+};

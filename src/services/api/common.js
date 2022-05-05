@@ -1,9 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 function getClientIP() {
-    return axios.get(`https://api.ipify.org`);
+    return axios.get('https://api.ipify.org');
 }
 
-export {
-    getClientIP
-}
+export {getClientIP};

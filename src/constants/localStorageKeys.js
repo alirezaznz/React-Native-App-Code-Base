@@ -1,4 +1,4 @@
 export const LocalStorageKeys = {
-  selectedLang: "selectedLang",
-  introAlreadySeen: "introAlreadySeen"
+    selectedLang: 'selectedLang',
+    introAlreadySeen: 'introAlreadySeen',
 };

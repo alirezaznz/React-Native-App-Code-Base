@@ -1,21 +1,21 @@
-import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import React from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 
 const Notification = () => {
-  return (
-    <View style={styles.center}>
-      <Text>This is the Notification screen</Text>
-    </View>
-  );
+    return (
+        <View style={styles.center}>
+            <Text>This is the Notification screen</Text>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-  },
+    center: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+    },
 });
 
 export default Notification;

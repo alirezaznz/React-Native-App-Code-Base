@@ -1,13 +1,13 @@
-import { showMessage } from "react-native-flash-message";
+import {showMessage} from 'react-native-flash-message';
 
-const HandleAPIErrorPayload = (err) => {
+const HandleAPIErrorPayload = err => {
     // console.log(err);
-    const { response, config } = err;
+    const {response, config} = err;
 
     if (response === undefined) {
         showMessage({
-            message: "Cannot Connect to Server",
-            type: "danger",
+            message: 'Cannot Connect to Server',
+            type: 'danger',
         });
         return;
     }
@@ -15,8 +15,8 @@ const HandleAPIErrorPayload = (err) => {
     return handleError(response);
 };
 
-const handleError = (response) => {
-    const { data } = response;
+const handleError = response => {
+    const {data} = response;
     let errMsg;
     if (data?.errorMessage) {
         errMsg = data.errorMessage;
@@ -26,9 +26,9 @@ const handleError = (response) => {
         errMsg = data?.message;
     }
     showMessage({
-        message: "errMsg",
-        type: "danger",
+        message: 'errMsg',
+        type: 'danger',
     });
 };
 
-export { HandleAPIErrorPayload };
+export {HandleAPIErrorPayload};

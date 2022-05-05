@@ -36,10 +36,12 @@
     "noEmit": true,
     "strict": true,
   },
-  // "include": [
-  //     "*",
-  //     // "App.jsx"
-  //   ],
+  "include": [
+      "src",
+    "__tests__",
+    ".eslintrc.js",
+     "App.jsx"
+    ],
   "exclude": [
     "__tests__/**/*-test.ts",
     "node_modules/*",

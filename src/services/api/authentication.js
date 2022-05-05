@@ -1,9 +1,7 @@
-import { API } from "./config";
+import {API} from './config';
 
 function Login(mobile) {
-    return API.post(`/login`, {username: mobile});
+    return API.post('/login', {username: mobile});
 }
 
-export {
-    Login
-}
+export {Login};

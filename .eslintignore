@@ -1,3 +1,14 @@
 .node_modules
 dist
 node_modules
+
+# don't lint build output (make sure it's set to your correct build folder name)
+build
+
+# don't lint nyc coverage output
+coverage
+
+.eslintrc.js
+
+.babel.config.js
+metro.config.js

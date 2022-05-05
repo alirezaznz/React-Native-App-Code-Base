@@ -1,17 +1,17 @@
 import React, {FC, useContext} from 'react';
 import {View, ViewStyle, StyleProp} from 'react-native';
 import {
-    theme,
     getSpacing,
     ThemeContext,
     Spacing,
     ResponsiveValue,
+    Color,
 } from '@Theme';
 
 interface BoxProps extends React.ComponentProps<typeof View> {
     padding?: keyof Spacing | ResponsiveValue;
     margin?: keyof Spacing | ResponsiveValue;
-    backgroundColor: keyof typeof theme.colors;
+    backgroundColor: keyof Color;
     style: ViewStyle;
     children: React.ReactNode;
 }

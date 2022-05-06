@@ -116,7 +116,6 @@ const AppIntor = ({navigation}) => {
                         navigation.replace(Routes.AuthNav);
                     }}
                     style={styles.doneBtn}
-                    color="background"
                 />
             </Animatable.View>
         );

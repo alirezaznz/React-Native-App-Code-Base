@@ -18,7 +18,6 @@ const RNButton: FC<ButtonProps> = ({
     onPress,
 }) => {
     const {theme} = useContext(ThemeContext);
-
     return (
         <TouchableOpacity
             style={[styles.container(theme, type), style]}

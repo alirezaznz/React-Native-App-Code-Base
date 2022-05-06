@@ -10,14 +10,13 @@ interface TextProps extends React.ComponentProps<typeof Text> {
 
 const RNText: FC<TextProps> = ({style, variant, color, children, ...rest}) => {
     const {theme} = useContext(ThemeContext);
-
     return (
         <Text
             style={
                 {
                     ...(style as object),
-                    color: theme.colors[color ?? 'text'],
                     ...theme.textVariants[variant ?? 'body'],
+                    color: color && theme.colors[color ?? 'text'],
                 } as StyleProp<TextStyle>
             }
             {...rest}>

@@ -1,11 +1,12 @@
-import {ButtonVariants, Theme, ThemeContext} from '@Theme';
+import {ButtonVariants, Color, theme, Theme, ThemeContext} from '@Theme';
 import React, {FC, useContext} from 'react';
-import {TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
+import {ColorValue, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
 import {RNText} from './RNText';
 interface ButtonProps extends React.ComponentProps<typeof TouchableOpacity> {
     title: string;
     type: keyof ButtonVariants;
     textStyle: TextStyle;
+    color?: keyof Color;
 }
 
 const RNButton: FC<ButtonProps> = ({
@@ -13,6 +14,7 @@ const RNButton: FC<ButtonProps> = ({
     type,
     style,
     textStyle,
+    color,
     onPress,
 }) => {
     const {theme} = useContext(ThemeContext);
@@ -21,7 +23,7 @@ const RNButton: FC<ButtonProps> = ({
         <TouchableOpacity
             style={[styles.container(theme, type), style]}
             onPress={onPress}>
-            <RNText style={textStyle}>{title}</RNText>
+            <RNText style={textStyle} color={color}>{title}</RNText>
         </TouchableOpacity>
     );
 };
@@ -42,6 +44,7 @@ const styles: Styles = {
 
 RNButton.defaultProps = {
     type: 'primary',
+    color: 'background'
 };
 
 export {RNButton};

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Theme, ThemeModes} from './interfaces';
-import {I18nManager} from 'react-native';
 
 const palette = {
     purple: '#5A31F4',
@@ -16,6 +15,7 @@ export const theme: Theme = {
         background: palette.white,
         foreground: palette.black,
         primary: palette.green,
+        disabled: palette.grey,
         success: palette.green,
         danger: palette.red,
         failure: palette.red,
@@ -28,7 +28,7 @@ export const theme: Theme = {
         l: 24,
         xl: 40,
     },
-    size: {
+    iconSize: {
         s: 8,
         m: 16,
         l: 24,

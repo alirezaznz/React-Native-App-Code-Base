@@ -10,7 +10,7 @@ import {
     I18nManager,
     Image,
 } from 'react-native';
-import {Images, LocalStorageKeys} from '@Constants';
+import {Images, LocalStorageKeys, Routes} from '@Constants';
 import {Box, Picker, RNButton, Biometics} from '@Components';
 import {LocalStorage} from '@Utils';
 import {ThemeContext} from '@Theme';
@@ -78,7 +78,7 @@ const Loading = ({navigation}) => {
                 langi18n.changeLanguage(lang);
                 await LocalStorage.remove(LocalStorageKeys.selectedLang);
                 setTimeout(() => {
-                    navigation.replace('Intor');
+                    navigation.replace(Routes.Intor);
                 }, 50);
             }
         })();
@@ -145,7 +145,7 @@ const Loading = ({navigation}) => {
                 />
                 <RNButton
                     onPress={() => {
-                        navigation.replace('Intor');
+                        navigation.replace(Routes.Intor);
                         if (appDirection === 'rtl' && !I18nManager.isRTL) {
                             I18nManager.forceRTL(true);
                             I18nManager.swapLeftAndRightInRTL(true);

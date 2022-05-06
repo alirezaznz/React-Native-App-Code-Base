@@ -1,4 +1,4 @@
-import {ColorValue, ScaledSize} from 'react-native';
+import {ColorValue} from 'react-native';
 
 export interface Color {
     background: ColorValue;
@@ -8,6 +8,7 @@ export interface Color {
     danger: ColorValue;
     failure: ColorValue;
     text: ColorValue;
+    disabled: ColorValue;
 }
 
 export interface Colors {
@@ -22,7 +23,7 @@ export interface Spacing {
     xl: number;
 }
 
-export interface Size {
+export interface IconSize {
     s: number;
     m: number;
     l: number;
@@ -67,7 +68,7 @@ export interface ResponsiveValue {
 
 export interface CommonTheme {
     spacing: Spacing;
-    size: Size;
+    iconSize: IconSize;
     breakpoints: BreakPoints;
 }
 
@@ -94,7 +95,7 @@ export interface Theme {
     colors: Color;
     textVariants: TextVariants;
     spacing: Spacing;
-    size: Size;
+    iconSize: IconSize;
     breakpoints: BreakPoints;
     buttonVariants: ButtonVariants;
 }

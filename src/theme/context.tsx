@@ -24,7 +24,7 @@ export const commonTheme: CommonTheme = {
         l: 24,
         xl: 40,
     },
-    size: {
+    iconSize: {
         s: 8,
         m: 16,
         l: 24,
@@ -90,6 +90,7 @@ export const themeModes: ThemeModes = {
             danger: palette.red,
             failure: palette.red,
             text: palette.black,
+            disabled: palette.grey,
         },
         buttonVariants: {
             primary: {bgColor: palette.green, color: palette.white},
@@ -106,6 +107,7 @@ export const themeModes: ThemeModes = {
             danger: palette.red,
             failure: palette.red,
             text: palette.black,
+            disabled: palette.grey,
         },
         buttonVariants: {
             primary: {bgColor: palette.green, color: palette.white},

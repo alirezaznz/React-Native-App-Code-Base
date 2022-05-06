@@ -1,5 +1,5 @@
 import {Dimensions} from 'react-native';
-import {BreakPoints, Spacing, Theme, ResponsiveValue} from './interfaces';
+import {BreakPoints, Spacing, Theme, ResponsiveValue, IconSize} from './interfaces';
 
 const dimensions = Dimensions.get('window');
 
@@ -21,9 +21,9 @@ const getBreakpointForScreenSize = (theme: Theme): keyof BreakPoints => {
 };
 
 const getResponsiveValue = (
-    value: keyof Spacing | ResponsiveValue,
+    value: keyof Spacing | keyof IconSize | ResponsiveValue,
     theme: Theme,
-): keyof Spacing => {
+): String => {
     if (typeof value === 'object') {
         const br = getBreakpointForScreenSize(theme);
         const val = value[br];
@@ -36,5 +36,12 @@ export const getSpacing = (
     value: keyof Spacing | ResponsiveValue,
     theme: Theme,
 ): number => {
-    return theme.spacing[getResponsiveValue(value, theme)];
+    return theme.spacing[getResponsiveValue(value, theme) as keyof Spacing];
+};
+
+export const getIconSize = (
+    value: keyof Spacing | ResponsiveValue,
+    theme: Theme,
+): number => {
+    return theme.iconSize[getResponsiveValue(value, theme) as keyof IconSize];
 };

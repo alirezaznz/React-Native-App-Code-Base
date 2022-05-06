@@ -14,7 +14,8 @@
         "inputPlaceholder": "شماره موبایل خود را وارد کنید",
         "privacy": "حفظ حریم خصوصی"
     },
-    "IntroPage": {
+    "introPage": {
+        "login_register": "login or register tr",
         "Intro1": {
             "title": "buy/sell crypto",
             "text": "یکی از خدمات ارزینجا ارائه خدمات خرید و فروش بیش از ۲۰۰ ارز دیجیتالی بر بستر بلاکچین می باشد"

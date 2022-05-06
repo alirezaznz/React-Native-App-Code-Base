@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Ion from 'react-native-vector-icons/Ionicons';
+import * as Animatable from 'react-native-animatable';
 
 const data = [
     {
@@ -108,14 +109,16 @@ const AppIntor = ({navigation}) => {
             return null;
         }
         return (
-            <RNButton
-                title={translate('introPage.login_register')}
-                onPress={() => {
-                    navigation.replace(Routes.AuthNav);
-                }}
-                style={styles.doneBtn}
-                color="background"
-            />
+            <Animatable.View animation="fadeInUp" style={styles.doneBtn}>
+                <RNButton
+                    title={translate('introPage.login_register')}
+                    onPress={() => {
+                        navigation.replace(Routes.AuthNav);
+                    }}
+                    style={styles.doneBtn}
+                    color="background"
+                />
+            </Animatable.View>
         );
     };
 
@@ -200,7 +203,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 8,
     },
     doneBtn: {
-        width: '90%',
+        width: '100%',
         height: 72,
     },
     buttonText: {

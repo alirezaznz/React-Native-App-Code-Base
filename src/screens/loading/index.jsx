@@ -171,7 +171,7 @@ const Loading = ({navigation}) => {
             style={styles.container}
             resizeMode={'cover'}>
             <View style={styles.indicatorWrapper}>
-                <Biometics changeAuthStatus={setBioAuthenticated} />
+                {/* <Biometics changeAuthStatus={setBioAuthenticated} /> */}
                 {detectLocation && bioAuthenticated ? (
                     renderSelectLang()
                 ) : (

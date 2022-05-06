@@ -18,6 +18,14 @@ export interface Spacing {
     xl: number;
 }
 
+export interface Size {
+    s: number;
+    m: number;
+    l: number;
+    xl: number;
+    xxl: number;
+}
+
 export interface Header {
     fontFamily: string;
     fontSize: 36;
@@ -54,6 +62,7 @@ export interface ResponsiveValue {
 export interface Theme {
     colors: Color;
     spacing: Spacing;
+    size: Size;
     buttonVariants: ButtonVariants;
     textVariants: TextVariants;
     breakpoints: BreakPoints;

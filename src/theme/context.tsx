@@ -15,7 +15,7 @@ export const theme: Theme = {
     colors: {
         background: palette.white,
         foreground: palette.black,
-        primary: palette.purple,
+        primary: palette.green,
         success: palette.green,
         danger: palette.red,
         failure: palette.red,
@@ -27,6 +27,13 @@ export const theme: Theme = {
         m: 16,
         l: 24,
         xl: 40,
+    },
+    size: {
+        s: 8,
+        m: 16,
+        l: 24,
+        xl: 32,
+        xxl: 40,
     },
     breakpoints: {
         smallPhone: 0,

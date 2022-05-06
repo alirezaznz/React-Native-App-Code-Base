@@ -56,7 +56,7 @@ const Picker: FC<PickerProps> = ({
                 value={value}
                 onValueChange={val => {
                     setChangeLang(val);
-                    onChange(val);
+                    onChange?.(val);
                 }}
                 onDonePress={() => onDone && onDone(changeLang)}
                 onClose={() => onClose && onClose(changeLang)}

@@ -58,13 +58,12 @@ const AppIntor = ({navigation}) => {
     const renderDots = activeIndex => {
         return (
             <Box style={styles.paginationDots}>
-                {data.length > 1 &&
-                    data.map((_, i) => (
-                        <View
-                            key={i}
-                            style={styles.dot(i === activeIndex, theme)}
-                        />
-                    ))}
+                {data.map((_, i) => (
+                    <View
+                        key={i}
+                        style={styles.dot(i === activeIndex, theme)}
+                    />
+                ))}
             </Box>
         );
     };
@@ -111,7 +110,9 @@ const AppIntor = ({navigation}) => {
         return (
             <RNButton
                 title={translate('introPage.login_register')}
-                onPress={() => {}}
+                onPress={() => {
+                    navigation.replace('AuthNav');
+                }}
                 style={styles.doneBtn}
                 color="background"
             />

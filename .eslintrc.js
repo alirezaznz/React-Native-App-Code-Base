@@ -45,6 +45,7 @@ module.exports = {
         'jest/no-identical-title': 'error',
         'react-hooks/exhaustive-deps': 'off',
         '@typescript-eslint/no-unused-vars': 'warn',
+        '@typescript-eslint/no-shadow': 'warn',
         'jest/prefer-to-have-length': 'warn',
         'jest/valid-expect': 'error',
     },

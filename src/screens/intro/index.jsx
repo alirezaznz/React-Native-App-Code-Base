@@ -1,5 +1,5 @@
 import {Box, RNButton, RNText} from '@Components';
-import {Images} from '@Constants';
+import {Images, Routes} from '@Constants';
 import {getSpacing, ThemeContext} from '@Theme';
 import React, {useContext, useRef} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -111,7 +111,7 @@ const AppIntor = ({navigation}) => {
             <RNButton
                 title={translate('introPage.login_register')}
                 onPress={() => {
-                    navigation.replace('AuthNav');
+                    navigation.replace(Routes.AuthNav);
                 }}
                 style={styles.doneBtn}
                 color="background"

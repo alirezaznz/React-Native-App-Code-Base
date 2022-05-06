@@ -14,7 +14,7 @@ import Svg, {Circle, Defs, LinearGradient, Stop} from 'react-native-svg';
 import {TabView} from 'react-native-tab-view';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {MText} from '@Components';
+import {RNText} from '@Components';
 import {Images, LOGIN_CONST} from '@Constants';
 import {checkAuth} from '@Actions';
 import {layoutAnimation} from '@Utils';
@@ -43,6 +43,7 @@ const Login = () => {
         ],
         opacity: pageAnim,
     };
+
     const headerStyle = [
         s.header,
         {
@@ -123,10 +124,10 @@ const Login = () => {
             keyboardShouldPersistTaps="handled">
             <Animated.View style={headerStyle}>
                 <Image source={Images.Logo} style={s.logo} />
-                <MText style={s.firstLogoT}>
-                    ARZ<MText style={s.secondLogoT}>INJA</MText>
-                </MText>
-                <MText>راز و رمـز ارزها در ارز اینجا</MText>
+                <RNText style={s.firstLogoT}>
+                    ARZ<RNText style={s.secondLogoT}>INJA</RNText>
+                </RNText>
+                <RNText>راز و رمـز ارزها در ارز اینجا</RNText>
             </Animated.View>
             <Animated.View style={containerStyle}>
                 <View

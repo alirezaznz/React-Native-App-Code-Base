@@ -7,6 +7,13 @@
         "Select_Language": "Select Language",
         "Enter": "Enter"
     },
+    "login": {
+        "header": "ورود/ثبت‌ نام",
+        "description": "جهت ورود یا عضویت شماره موبایل خود را وارد نمایید و منتظر کد تایید پیامکی باشید",
+        "btn": "ارسال کد تایید",
+        "inputPlaceholder": "شماره موبایل خود را وارد کنید",
+        "privacy": "حفظ حریم خصوصی"
+    },
     "IntroPage": {
         "Intro1": {
             "title": "buy/sell crypto",

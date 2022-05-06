@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     description: {
+        color: 'red',
         marginBottom: 30,
         marginTop: 10,
     },

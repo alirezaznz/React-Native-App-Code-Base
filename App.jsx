@@ -3,11 +3,21 @@ import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigation from './src/navigation';
 import {Provider} from 'react-redux';
-import {ThemeContext, themes} from '@Theme';
+import {
+    theme,
+    ThemeContext,
+    themeDirections,
+    themeLanguages,
+    themeModes,
+    themes,
+} from '@Theme';
 import {ENV} from '@Constants';
 import {StyleSheet, Text} from 'react-native';
 import store from './src/redux/store';
 import {NetworkStateCheck} from '@Components';
+
+import i18n from 'i18next';
+import {initReactI18next} from 'react-i18next';
 
 // const checkCodePushUpdate = () => {
 //   return codePush.sync({
@@ -23,14 +33,35 @@ import {NetworkStateCheck} from '@Components';
 const App = () => {
     const [themeMode, setThemeMode] = useState('light');
     const [direction, setDirection] = useState('rtl');
+    const [locale, setLocale] = useState(i18n.language);
+
+    // const locale = 'en';
+
+    const initTheme = {
+        ...theme,
+        ...themeModes[themeMode],
+        textVariants: {
+            header: {
+                ...themeLanguages[locale].header,
+                color: themeModes[themeMode].colors.foreground,
+            },
+            body: {
+                ...themeLanguages[locale].body,
+                color: themeModes[themeMode].colors.foreground,
+            },
+        },
+        ...themeDirections[direction],
+    };
 
     return (
         <ThemeContext.Provider
             value={{
-                theme: themes[themeMode][direction],
-                setThemeMode: theme => setThemeMode(theme),
+                theme: initTheme,
+                setThemeMode,
+                locale,
+                setLocale,
                 direction,
-                setDirection: dir => setDirection(dir),
+                setDirection,
             }}>
             {ENV.name !== 'Prod' && (
                 <Text style={styles.environment}>env: {ENV.name}</Text>

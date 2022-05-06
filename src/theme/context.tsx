@@ -1,6 +1,11 @@
 import React from 'react';
-import {Theme, ThemeModes} from './interfaces';
-import {I18nManager} from 'react-native';
+import {
+    CommonTheme,
+    Theme,
+    ThemeDirections,
+    ThemeLanguages,
+    ThemeModes,
+} from './interfaces';
 
 const palette = {
     purple: '#5A31F4',
@@ -11,16 +16,7 @@ const palette = {
     grey: '#808080',
 };
 
-export const theme: Theme = {
-    colors: {
-        background: palette.white,
-        foreground: palette.black,
-        primary: palette.green,
-        success: palette.green,
-        danger: palette.red,
-        failure: palette.red,
-        text: palette.black,
-    },
+export const commonTheme: CommonTheme = {
     spacing: {
         default: 0,
         s: 8,
@@ -40,59 +36,107 @@ export const theme: Theme = {
         phone: 321,
         tablet: 768,
     },
-    buttonVariants: {
-        primary: {bgColor: palette.green},
-        secondry: {bgColor: palette.white},
-        disabled: {bgColor: palette.grey},
-    },
-    textVariants: {
+};
+
+export const themeLanguages: ThemeLanguages = {
+    en: {
         header: {
-            fontFamily: 'Arial',
+            fontFamily: 'IRANSansMobile-Bold',
             fontSize: 36,
-            fontWeight: 'bold',
         },
         body: {
-            fontFamily: 'Arial',
+            fontFamily: 'IRANSansMobile',
+            fontSize: 16,
+        },
+    },
+    fa: {
+        header: {
+            fontFamily: 'IRANSansMobile-Bold',
+            fontSize: 36,
+        },
+        body: {
+            fontFamily: 'IRANSansMobile',
+            fontSize: 16,
+        },
+    },
+    tr: {
+        header: {
+            fontFamily: 'IRANSansMobile-Bold',
+            fontSize: 36,
+        },
+        body: {
+            fontFamily: 'IRANSansMobile',
             fontSize: 16,
         },
     },
 };
 
-export const themes: ThemeModes = {
-    light: {
-        rtl: {
-            ...theme,
-            colors: {
-                ...theme.colors,
-            },
-            imageTransfor: {transform: [{scaleX: -1}]},
+export const themeDirections: ThemeDirections = {
+    rtl: {
+        imageTransform: {transform: [{scaleX: -1}]},
+    },
+    ltr: {
+        imageTransform: {transform: [{scaleX: 1}]},
+    },
+};
+
+export const themeModes: ThemeModes = {
+    dark: {
+        colors: {
+            background: palette.white,
+            foreground: palette.black,
+            primary: palette.green,
+            success: palette.green,
+            danger: palette.red,
+            failure: palette.red,
+            text: palette.black,
         },
-        ltr: {
-            ...theme,
-            colors: {
-                ...theme.colors,
-            },
-            imageTransfor: {transform: [{scaleX: 1}]},
+        buttonVariants: {
+            primary: {bgColor: palette.green, color: palette.white},
+            secondry: {bgColor: palette.white, color: palette.black},
+            disabled: {bgColor: palette.grey, color: palette.white},
         },
     },
-    dark: {
-        rtl: {
-            ...theme,
-            colors: {
-                ...theme.colors,
-            },
+    light: {
+        colors: {
+            background: palette.white,
+            foreground: palette.black,
+            primary: palette.green,
+            success: palette.green,
+            danger: palette.red,
+            failure: palette.red,
+            text: palette.black,
         },
-        ltr: {
-            ...theme,
-            colors: {
-                ...theme.colors,
-            },
+        buttonVariants: {
+            primary: {bgColor: palette.green, color: palette.white},
+            secondry: {bgColor: palette.white, color: palette.black},
+            disabled: {bgColor: palette.grey, color: palette.white},
         },
     },
 };
 
+const theme: Theme = {
+    ...commonTheme,
+    ...themeModes.light,
+    textVariants: {
+        header: {
+            color: themeModes.light.colors.foreground,
+            fontFamily: 'IRANSansMobile-Bold',
+            fontSize: 36,
+        },
+        body: {
+            color: themeModes.light.colors.foreground,
+            fontFamily: 'IRANSansMobile',
+            fontSize: 16,
+        },
+    },
+    ...themeDirections.ltr,
+};
+
+export {theme};
+
 export const ThemeContext = React.createContext({
-    theme: themes.light.rtl,
+    theme,
     direction: 'ltr',
     themeMode: 'light',
 });

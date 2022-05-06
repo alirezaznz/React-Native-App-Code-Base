@@ -10,6 +10,10 @@ export interface Color {
     text: ColorValue;
 }
 
+export interface Colors {
+    light: Color;
+    dark: Color;
+}
 export interface Spacing {
     default: number;
     s: number;
@@ -27,20 +31,22 @@ export interface Size {
 }
 
 export interface Header {
+    color?: ColorValue;
     fontFamily: string;
     fontSize: 36;
-    fontWeight: number | string;
+    // fontWeight: number | string;
 }
 
 export interface Body {
+    color?: ColorValue;
     fontFamily: string;
     fontSize: number;
 }
 
 export interface ButtonVariants {
-    primary: {bgColor: ColorValue};
-    secondry: {bgColor: ColorValue};
-    disabled: {bgColor: ColorValue};
+    primary: {bgColor: ColorValue; color: ColorValue};
+    secondry: {bgColor: ColorValue; color: ColorValue};
+    disabled: {bgColor: ColorValue; color: ColorValue};
 }
 export interface TextVariants {
     header: Header;
@@ -59,23 +65,36 @@ export interface ResponsiveValue {
     tablet: keyof Spacing;
 }
 
-export interface Theme {
-    colors: Color;
+export interface CommonTheme {
     spacing: Spacing;
     size: Size;
-    buttonVariants: ButtonVariants;
-    textVariants: TextVariants;
     breakpoints: BreakPoints;
-    imageTransfor?: {};
 }
 
 export interface ThemeModes {
-    light: {
-        ltr: Theme;
-        rtl: Theme;
+    dark: {colors: Color; buttonVariants: ButtonVariants};
+    light: {colors: Color; buttonVariants: ButtonVariants};
+}
+export interface ThemeLanguages {
+    en: TextVariants;
+    fa: TextVariants;
+    tr: TextVariants;
+}
+
+export interface ThemeDirections {
+    rtl: {
+        imageTransform: object;
     };
-    dark: {
-        ltr: Theme;
-        rtl: Theme;
+    ltr: {
+        imageTransform: object;
     };
+}
+export interface Theme {
+    imageTransform: object;
+    colors: Color;
+    textVariants: TextVariants;
+    spacing: Spacing;
+    size: Size;
+    breakpoints: BreakPoints;
+    buttonVariants: ButtonVariants;
 }

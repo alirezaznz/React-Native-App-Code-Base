@@ -13,8 +13,13 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-arzinja-arzinjaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-arzinja-arzinjaTests.a */; };
+		8183BE9E3F9E4491AA36DCA1 /* IRANSansMobile-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2540E3DCEC404675A3942487 /* IRANSansMobile-Light.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8DE4C9B77AAF46ACA3E0DB05 /* IRANSansMobile-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BC58358E9E043E0907C6770 /* IRANSansMobile-Bold.ttf */; };
+		932EB1FB1F4B4E5F84026E28 /* IRANSansMobile-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E16082709F3241F3B0E0E11B /* IRANSansMobile-Medium.ttf */; };
 		C4E7CD8B281C071B008840B6 /* RNConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E7CD8A281C071B008840B6 /* RNConfig.m */; };
+		CA861E3544EB497FAD9935D6 /* IRANSansMobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A864D6DF6564446ADA889C3 /* IRANSansMobile.ttf */; };
+		E8BB32544B224A43B7295FCF /* IRANSansMobileFaNum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F1F34EFC3F943C1B7C4BFDA /* IRANSansMobileFaNum.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +45,9 @@
 		13F0370B8F6915FDDE20E1E2 /* Pods-arzinja-arzinjaTests.debugpreprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja-arzinjaTests.debugpreprod.xcconfig"; path = "Target Support Files/Pods-arzinja-arzinjaTests/Pods-arzinja-arzinjaTests.debugpreprod.xcconfig"; sourceTree = "<group>"; };
 		16BCD81414D33650F0637413 /* Pods-arzinja.debugbeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja.debugbeta.xcconfig"; path = "Target Support Files/Pods-arzinja/Pods-arzinja.debugbeta.xcconfig"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-arzinja-arzinjaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-arzinja-arzinjaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC58358E9E043E0907C6770 /* IRANSansMobile-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IRANSansMobile-Bold.ttf"; path = "../src/assets/fonts/IRANSansMobile-Bold.ttf"; sourceTree = "<group>"; };
 		20591B0938D2B231822F473C /* Pods-arzinja-arzinjaTests.releaseprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja-arzinjaTests.releaseprod.xcconfig"; path = "Target Support Files/Pods-arzinja-arzinjaTests/Pods-arzinja-arzinjaTests.releaseprod.xcconfig"; sourceTree = "<group>"; };
+		2540E3DCEC404675A3942487 /* IRANSansMobile-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IRANSansMobile-Light.ttf"; path = "../src/assets/fonts/IRANSansMobile-Light.ttf"; sourceTree = "<group>"; };
 		34D80779E05A5324AF701DF2 /* Pods-arzinja.releasestage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja.releasestage.xcconfig"; path = "Target Support Files/Pods-arzinja/Pods-arzinja.releasestage.xcconfig"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-arzinja.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja.debug.xcconfig"; path = "Target Support Files/Pods-arzinja/Pods-arzinja.debug.xcconfig"; sourceTree = "<group>"; };
 		3FF3AFF0766CDFD28C3B097C /* Pods-arzinja.releasepreprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja.releasepreprod.xcconfig"; path = "Target Support Files/Pods-arzinja/Pods-arzinja.releasepreprod.xcconfig"; sourceTree = "<group>"; };
@@ -49,8 +56,10 @@
 		5B36BDC9336F33132E900EFD /* Pods-arzinja.debugstage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja.debugstage.xcconfig"; path = "Target Support Files/Pods-arzinja/Pods-arzinja.debugstage.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-arzinja-arzinjaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja-arzinjaTests.debug.xcconfig"; path = "Target Support Files/Pods-arzinja-arzinjaTests/Pods-arzinja-arzinjaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-arzinja.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-arzinja.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F1F34EFC3F943C1B7C4BFDA /* IRANSansMobileFaNum.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = IRANSansMobileFaNum.ttf; path = ../src/assets/fonts/IRANSansMobileFaNum.ttf; sourceTree = "<group>"; };
 		76B1A5DE62682C66D663340C /* Pods-arzinja-arzinjaTests.debugstage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja-arzinjaTests.debugstage.xcconfig"; path = "Target Support Files/Pods-arzinja-arzinjaTests/Pods-arzinja-arzinjaTests.debugstage.xcconfig"; sourceTree = "<group>"; };
 		7A4166F005FA11583FEC6806 /* Pods-arzinja-arzinjaTests.debugbeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja-arzinjaTests.debugbeta.xcconfig"; path = "Target Support Files/Pods-arzinja-arzinjaTests/Pods-arzinja-arzinjaTests.debugbeta.xcconfig"; sourceTree = "<group>"; };
+		7A864D6DF6564446ADA889C3 /* IRANSansMobile.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = IRANSansMobile.ttf; path = ../src/assets/fonts/IRANSansMobile.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = arzinja/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-arzinja-arzinjaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja-arzinjaTests.release.xcconfig"; path = "Target Support Files/Pods-arzinja-arzinjaTests/Pods-arzinja-arzinjaTests.release.xcconfig"; sourceTree = "<group>"; };
 		A53B1848CEF84A470C1DDA3A /* Pods-arzinja-arzinjaTests.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja-arzinjaTests.releasebeta.xcconfig"; path = "Target Support Files/Pods-arzinja-arzinjaTests/Pods-arzinja-arzinjaTests.releasebeta.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +69,7 @@
 		C4E7CD89281C071B008840B6 /* RNConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNConfig.h; path = arzinja/RNConfig.h; sourceTree = "<group>"; };
 		C4E7CD8A281C071B008840B6 /* RNConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RNConfig.m; path = arzinja/RNConfig.m; sourceTree = "<group>"; };
 		DCB71443DD9CFF3D473D1A8D /* Pods-arzinja.releaseprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja.releaseprod.xcconfig"; path = "Target Support Files/Pods-arzinja/Pods-arzinja.releaseprod.xcconfig"; sourceTree = "<group>"; };
+		E16082709F3241F3B0E0E11B /* IRANSansMobile-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IRANSansMobile-Medium.ttf"; path = "../src/assets/fonts/IRANSansMobile-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F1D398979C150DEF63617709 /* Pods-arzinja.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja.releasebeta.xcconfig"; path = "Target Support Files/Pods-arzinja/Pods-arzinja.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		FAB742CEB6DB8E9488F54925 /* Pods-arzinja.debugprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arzinja.debugprod.xcconfig"; path = "Target Support Files/Pods-arzinja/Pods-arzinja.debugprod.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +137,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		60904AC72B0D40D481C2E4DE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1BC58358E9E043E0907C6770 /* IRANSansMobile-Bold.ttf */,
+				2540E3DCEC404675A3942487 /* IRANSansMobile-Light.ttf */,
+				E16082709F3241F3B0E0E11B /* IRANSansMobile-Medium.ttf */,
+				7A864D6DF6564446ADA889C3 /* IRANSansMobile.ttf */,
+				5F1F34EFC3F943C1B7C4BFDA /* IRANSansMobileFaNum.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +165,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				60904AC72B0D40D481C2E4DE /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -282,6 +305,11 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				8DE4C9B77AAF46ACA3E0DB05 /* IRANSansMobile-Bold.ttf in Resources */,
+				8183BE9E3F9E4491AA36DCA1 /* IRANSansMobile-Light.ttf in Resources */,
+				932EB1FB1F4B4E5F84026E28 /* IRANSansMobile-Medium.ttf in Resources */,
+				CA861E3544EB497FAD9935D6 /* IRANSansMobile.ttf in Resources */,
+				E8BB32544B224A43B7295FCF /* IRANSansMobileFaNum.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

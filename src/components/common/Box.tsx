@@ -11,9 +11,7 @@ import {
 interface BoxProps extends React.ComponentProps<typeof View> {
     padding?: keyof Spacing | ResponsiveValue;
     margin?: keyof Spacing | ResponsiveValue;
-    backgroundColor: keyof Color;
-    style: ViewStyle;
-    children: React.ReactNode;
+    backgroundColor?: keyof Color;
 }
 
 const Box: FC<BoxProps> = ({
@@ -32,8 +30,8 @@ const Box: FC<BoxProps> = ({
                 {
                     margin: getSpacing(margin!, theme),
                     padding: getSpacing(padding!, theme),
-                    backgroundColor: theme.colors[backgroundColor],
-                    ...style,
+                    backgroundColor: theme.colors[backgroundColor!],
+                    ...(style as object),
                 } as StyleProp<ViewStyle>
             }
             {...rest}>
@@ -43,6 +41,7 @@ const Box: FC<BoxProps> = ({
 };
 
 Box.defaultProps = {
+    backgroundColor: 'background' as keyof Color,
     margin: 'default' as keyof Spacing,
     padding: 'default' as keyof Spacing,
 };

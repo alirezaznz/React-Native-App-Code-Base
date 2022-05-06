@@ -1,10 +1,15 @@
 import ReactNativeBiometrics from 'react-native-biometrics';
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {ActivityIndicator, Modal} from 'react-native';
+import {LocalStorage} from '@Utils';
+import {LocalStorageKeys} from '@Constants';
 
-// check locale
-export const Biometics = ({navigation, changeAuthStatus = () => {}}) => {
-    const [bioIsAvailable, setBioAvailability] = useState(undefined);
+interface BiometricsProps {
+    changeAuthStatus: (Argument: boolean) => void;
+}
+
+export const Biometrics: FC<BiometricsProps> = ({changeAuthStatus}) => {
+    const [bioIsAvailable, setBioAvailability] = useState(false);
     const [bioAuthenticated, setBioAuthenticated] = useState(true);
 
     //biometrics check
@@ -18,20 +23,23 @@ export const Biometics = ({navigation, changeAuthStatus = () => {}}) => {
         }
     }, [bioIsAvailable]);
 
-    const createBioKeyIfNotExists = () => {
-        return new Promise(resolve => {
+    const createBioKeyIfNotExists = (): Promise<void> => {
+        return new Promise<void>(resolve => {
             ReactNativeBiometrics.biometricKeysExist().then(resultObject => {
                 const {keysExist} = resultObject;
                 if (keysExist) {
                     resolve();
                 } else {
-                    ReactNativeBiometrics.createKeys(
-                        'Confirm fingerprint',
-                    ).then(resultObject => {
-                        const {publicKey} = resultObject;
-                        LocalStorage.save('BioPublicKey', publicKey);
-                        resolve();
-                    });
+                    ReactNativeBiometrics.createKeys().then(
+                        generatedKeyResult => {
+                            const {publicKey} = generatedKeyResult;
+                            LocalStorage.save(
+                                LocalStorageKeys.BioPublicKey,
+                                publicKey,
+                            );
+                            resolve();
+                        },
+                    );
                 }
             });
         });
@@ -41,7 +49,7 @@ export const Biometics = ({navigation, changeAuthStatus = () => {}}) => {
         ReactNativeBiometrics.isSensorAvailable().then(resultObject => {
             const {available, biometryType} = resultObject;
             if (!available) {
-                bioAuthenticated(true);
+                setBioAuthenticated(true);
                 setBioAvailability(false);
                 changeAuthStatus(true);
                 console.log('bio available: ', false);
@@ -58,7 +66,7 @@ export const Biometics = ({navigation, changeAuthStatus = () => {}}) => {
         });
     };
 
-    const getBioKey = () => {
+    const getBioKey = (): void => {
         ReactNativeBiometrics.simplePrompt({
             promptMessage: 'Confirm fingerprint',
         })
@@ -81,10 +89,7 @@ export const Biometics = ({navigation, changeAuthStatus = () => {}}) => {
 
     return (
         <Modal animationType="slide" transparent={true} visible={true}>
-            <ActivityIndicator
-                size="large"
-                // color={STYLES.Color.success}
-            />
+            <ActivityIndicator size="large" />
         </Modal>
     );
 };

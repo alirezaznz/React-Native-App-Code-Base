@@ -1,19 +1,10 @@
-import {ThemeContext} from '@Theme';
+import {ButtonVariants, Theme, ThemeContext} from '@Theme';
 import React, {FC, useContext} from 'react';
-import {StyleProp, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
+import {TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
 import {RNText} from './RNText';
-
-export enum Type {
-    Primary,
-    Secondry,
-    Disabled,
-}
-// const typeBg = {
-//     [Type.Primary]: theme.buttonVariants.primary.bgColor
-// }
 interface ButtonProps extends React.ComponentProps<typeof TouchableOpacity> {
     title: string;
-    type: Type;
+    type: keyof ButtonVariants;
     textStyle: TextStyle;
 }
 
@@ -26,30 +17,31 @@ const RNButton: FC<ButtonProps> = ({
 }) => {
     const {theme} = useContext(ThemeContext);
 
-    function typeColor(): ViewStyle {
-        switch (type) {
-            case Type.Primary:
-                return {backgroundColor: theme.buttonVariants.primary.bgColor};
-            case Type.Secondry:
-                return {backgroundColor: theme.buttonVariants.secondry.bgColor};
-            case Type.Disabled:
-                return {backgroundColor: theme.buttonVariants.disabled.bgColor};
-            default:
-                return {backgroundColor: theme.buttonVariants.disabled.bgColor};
-        }
-    }
-
     return (
         <TouchableOpacity
-            style={[
-                typeColor as StyleProp<ViewStyle>,
-                {justifyContent: 'center', alignItems: 'center'},
-                style,
-            ]}
+            style={[styles.container(theme, type), style]}
             onPress={onPress}>
             <RNText style={textStyle}>{title}</RNText>
         </TouchableOpacity>
     );
+};
+
+interface Styles {
+    container: (theme: Theme, type: keyof ButtonVariants) => ViewStyle;
+}
+
+const styles: Styles = {
+    container: (theme: Theme, type: keyof ButtonVariants): ViewStyle => ({
+        backgroundColor: theme.buttonVariants[type].bgColor,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: theme.spacing.m,
+        borderRadius: 12,
+    }),
+};
+
+RNButton.defaultProps = {
+    type: 'primary',
 };
 
 export {RNButton};

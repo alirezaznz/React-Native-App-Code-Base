@@ -16,16 +16,17 @@ After cloning the ArzHere Repo, you will see a few top-level folders in it:
 + Theme: Theme manager and related context, variables and functionalities
 + Utils: Common functional utilities
 
-
-
-Node Version
+## Node Version
 We’ve used Node.js v18.0.0 for initializing and then developing this application. You can install latest node version (or 18 version with node@18) with the following command using brew OSX package manager:
+
+<pre><code>
 brew install node
+</code></pre>
 
-
-Package Manager
+## Package Manager
 We’ve chosen Yarn as our package manager. There are separate reasons to use Yarn in small or big projects. Its main advantage is the fact that it helps to avoid any possible problems related to different versions of node. js system modules, on which the project will be mounted.
 So in order to install required packages run the following CLI commands (in OSX):
+
 <pre><code>
 brew install yarn
 brew install watchman
@@ -34,20 +35,15 @@ brew cask install adoptopenjdk8
 </code></pre>
 
 Then install npm packages:
+<pre><code>
 yarn install
-
+</code></pre>
 
 finally , install IOS pod run below command in project’s source folder:
-cd ios && pod install
 
+<pre><code>
+cd ios && pod install
+</code></pre>
 
 Colocated Tests
 We don’t have a top-level directory for unit tests. Instead, we put them into a directory called __tests__ relative to the files that they test.
-Top-Level Application Architecture
-
-
-
-
-
-Architecture Benefits
-

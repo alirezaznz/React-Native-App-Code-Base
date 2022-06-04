@@ -23,12 +23,12 @@ brew install node
 Package Manager
 We’ve chosen Yarn as our package manager. There are separate reasons to use Yarn in small or big projects. Its main advantage is the fact that it helps to avoid any possible problems related to different versions of node. js system modules, on which the project will be mounted.
 So in order to install required packages run the following CLI commands (in OSX):
-
+<pre><code>
 brew install yarn
 brew install watchman
 brew tap AdoptOpenJDK/openjdk
 brew cask install adoptopenjdk8
-
+</code></pre>
 
 Then install npm packages:
 yarn install

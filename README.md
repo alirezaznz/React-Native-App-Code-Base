@@ -1,4 +1,6 @@
-Top-Level Folders
+# Header 1 React Native Code Base
+
+## Header 2 Top-Level Folders
 After cloning the ArzHere Repo, you will see a few top-level folders in it:
 Assets: List of fonts and images
 Components: Reusable components written in Typescript

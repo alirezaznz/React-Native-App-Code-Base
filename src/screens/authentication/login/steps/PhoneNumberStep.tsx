@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import {RNText, RNButton, RNInput, Box} from '@Components';
 import {useTranslation} from 'react-i18next';
 

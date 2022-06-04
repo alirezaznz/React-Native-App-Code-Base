@@ -15,3 +15,4 @@ metro.config.js
 
 index.js
 react-native.config.js
+babel.config.js

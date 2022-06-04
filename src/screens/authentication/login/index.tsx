@@ -19,12 +19,14 @@ import {Images, LOGIN_CONST} from '@Constants';
 import {checkAuth} from '@Actions';
 import {layoutAnimation} from '@Utils';
 import {PhoneNumberStep} from './steps';
+import {useTranslation} from 'react-i18next';
 
 const {width, height} = Dimensions.get('window');
 const {routes} = LOGIN_CONST;
 const stepSize = Platform.select({ios: 70, android: 60});
 
 const Login = () => {
+    const {t: translate} = useTranslation();
     const dispatch = useDispatch();
     const userStatus = useSelector(state => state.UserReducer.status);
     const [index, setIndex] = useState(
@@ -125,20 +127,14 @@ const Login = () => {
             <Animated.View style={headerStyle}>
                 <Image source={Images.Logo} style={s.logo} />
                 <RNText style={s.firstLogoT}>
-                    ARZ<RNText style={s.secondLogoT}>INJA</RNText>
+                    <RNText style={s.secondLogoT}>
+                        {translate('login.appName')}
+                    </RNText>
                 </RNText>
-                <RNText>راز و رمـز ارزها در ارز اینجا</RNText>
+                <RNText>{translate('login.appDescription')}</RNText>
             </Animated.View>
             <Animated.View style={containerStyle}>
-                <View
-                    width={width}
-                    height={height * routes[index].height}
-                    radius={25}
-                    shadowY={1}
-                    shadowOpacity={0.07}
-                    shadowBlur={22}
-                    style={s.bottom}
-                    containerStyle={s.bottomContainer}>
+                <View style={s.bottom}>
                     <TabView
                         navigationState={{index, routes}}
                         renderScene={renderScene}
@@ -148,21 +144,7 @@ const Login = () => {
                         swipeEnabled={false}
                     />
                     <View style={s.stepHeader}>
-                        <View
-                            width={stepSize}
-                            height={stepSize}
-                            radius={stepSize / 2}
-                            shadowColor={routes[index].secondary}
-                            backgroundColor="transparent"
-                            containerStyle={[
-                                s.stepHeaderCircle,
-                                {
-                                    borderColor: Color(
-                                        routes[index].secondary,
-                                    ).alpha(0.2),
-                                },
-                            ]}
-                            shadowBlur={20}>
+                        <View>
                             <Svg width={stepSize} height={stepSize}>
                                 <Defs>
                                     <LinearGradient

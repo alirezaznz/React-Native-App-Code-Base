@@ -5,8 +5,8 @@
 After cloning the ArzHere Repo, you will see a few top-level folders in it:
 + Assets: List of fonts and images
 + Components: Reusable components written in Typescript
-++  Common: Small reusable components written in Typescript (Button, Text , etc.)
-++  Others: Large reusable components written in Typescript (Currency Selection Modal, etc.)
++  Common: Small reusable components written in Typescript (Button, Text , etc.)
++  Others: Large reusable components written in Typescript (Currency Selection Modal, etc.)
 + Constants: Constant variables like environment, secret keys, routes, etc. 
 + I18n: Required configurations for multi language support
 + Navigations: Navigation Stacks and Tabs

@@ -1,19 +1,20 @@
-# Header 1 React Native Code Base
+# React Native Code Base
 
-## Header 2 Top-Level Folders
+## Top-Level Folders
+
 After cloning the ArzHere Repo, you will see a few top-level folders in it:
-Assets: List of fonts and images
-Components: Reusable components written in Typescript
-Common: Small reusable components written in Typescript (Button, Text , etc.)
-Others: Large reusable components written in Typescript (Currency Selection Modal, etc.)
-Constants: Constant variables like environment, secret keys, routes, etc. 
-I18n: Required configurations for multi language support
-Navigations: Navigation Stacks and Tabs
-Redux: Public state management
-Screens: Components which render a whole page
-Services: Business services. For Instance: APIs, statistics 
-Theme: Theme manager and related context, variables and functionalities
-Utils: Common functional utilities
++Assets: List of fonts and images
++Components: Reusable components written in Typescript
+++Common: Small reusable components written in Typescript (Button, Text , etc.)
+++Others: Large reusable components written in Typescript (Currency Selection Modal, etc.)
++Constants: Constant variables like environment, secret keys, routes, etc. 
++I18n: Required configurations for multi language support
++Navigations: Navigation Stacks and Tabs
++Redux: Public state management
++Screens: Components which render a whole page
++Services: Business services. For Instance: APIs, statistics 
++Theme: Theme manager and related context, variables and functionalities
++Utils: Common functional utilities
 
 
 
